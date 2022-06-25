@@ -1,26 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- *
- * @author ENOR ACOSTA
- */
 @Entity
 @Table(name = "usuarios")
 @NamedQueries({
@@ -92,7 +77,17 @@ public class Usuario implements Serializable {
     public void setDocente(Docente docente) {
         this.docente = docente;
     }
-
+    
+    public String getNivelUsuarioText(){
+        switch(nivelUsuario){
+            case 1:
+                return "ADMINISTRADOR";
+            case 2:
+                return "DOCENTE";
+            default:
+                return "OTRO";
+        }
+    }
     @Override
     public int hashCode() {
         int hash = 0;
