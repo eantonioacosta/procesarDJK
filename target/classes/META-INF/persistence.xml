@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="djk_ProcesarDKJ_jar_1.0PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>djk.procesardkj.domain.Area</class>
+    <class>djk.procesardkj.domain.Grupo</class>
+    <class>djk.procesardkj.domain.Padre</class>
+    <class>djk.procesardkj.domain.Asignatura</class>
+    <class>djk.procesardkj.domain.Nota</class>
+    <class>djk.procesardkj.domain.Docente</class>
+    <class>djk.procesardkj.domain.Estudiante</class>
+    <class>djk.procesardkj.domain.Matricula</class>
+    <class>djk.procesardkj.domain.AnioLectivo</class>
+    <class>djk.procesardkj.domain.Usuario</class>
+    <class>djk.procesardkj.domain.Observacion</class>
+    <class>djk.procesardkj.domain.CargaAcademica</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/djk_procesardb?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
+    </properties>
+  </persistence-unit>
+</persistence>
