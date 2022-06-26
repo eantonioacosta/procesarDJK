@@ -422,9 +422,9 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void menuItemUsuarios(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarios
-//        FormUsuarios formUsuarios = new FormUsuarios();
-//        layeredPanel.add(formUsuarios);
-//        formUsuarios.setVisible(true);
+        ViewUsuarios formUsuarios = new ViewUsuarios();
+        layeredPanel.add(formUsuarios);
+        formUsuarios.setVisible(true);
     }//GEN-LAST:event_menuItemUsuarios
 
     private void jMenuItemAniosLectivos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAniosLectivos

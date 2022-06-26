@@ -32,10 +32,19 @@ public class Usuario implements Serializable {
     private Docente docente;
 
     public Usuario() {
+        docente = new Docente();
     }
 
     public Usuario(String codigo) {
         this.codigo = codigo;
+        docente = new Docente();
+    }
+
+    public Usuario(String codigo, String nombre, String clave, Integer nivelUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.clave = clave;
+        this.nivelUsuario = nivelUsuario;
     }
 
     public String getCodigo() {
