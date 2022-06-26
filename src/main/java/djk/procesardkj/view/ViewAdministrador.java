@@ -444,9 +444,9 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-//        FormDocente formDocente = new FormDocente();
-//        layeredPanel.add(formDocente);
-//        formDocente.setVisible(true);
+        ViewDocente formDocente = new ViewDocente();
+        layeredPanel.add(formDocente);
+        formDocente.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void MenuItemMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemMatricularActionPerformed

@@ -6,6 +6,8 @@
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -85,6 +87,24 @@ public class Docente implements Serializable {
     public Docente(Integer idDocente) {
         this.idDocente = idDocente;
     }
+
+    public Docente(Integer idDocente, String nombres, String apellidos, Integer estado, Date fechaNacimiento, Integer tipoSangre, String direccion, String telefono, String correo, String ciudad, String titulo, Usuario usuario) {
+        this.idDocente = idDocente;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.estado = estado;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoSangre = tipoSangre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.ciudad = ciudad;
+        this.titulo = titulo;
+        this.usuario = usuario;
+        cargaAcademicaList = new ArrayList<>();
+        grupoList = new ArrayList<>();
+    }
+    
 
     public Integer getIdDocente() {
         return idDocente;
@@ -223,4 +243,52 @@ public class Docente implements Serializable {
         return "djk.procesardkj.domain.Docente[ idDocente=" + idDocente + " ]";
     }
     
+    private String getFormatFecha(Date fecha) {
+        SimpleDateFormat objSDF = new SimpleDateFormat("dd-mm-yyyy");
+        return objSDF.format(fecha);
+    }
+
+    public String getFechaNacimientoTexto() {
+        return getFormatFecha(fechaNacimiento);
+    }
+
+    public String getEstadoTexto() {
+        switch (estado) {
+            case 1:
+                return "Activo";
+            case 2:
+                return "Suspendido";
+            case 3:
+                return "Retirado";
+            default:
+                return "Sin definir";
+        }
+    }
+    
+    public String getNombreCompleto() {
+        return nombres + "" + apellidos;
+    }
+
+    public String getTipoSangreTexto() {
+        switch (tipoSangre) {
+            case 1:
+                return "O negativo (O-)";
+            case 2:
+                return "O positivo (O+)";
+            case 3:
+                return "A positivo (A +)";
+            case 4:
+                return "A negativo (A-)";
+            case 5:
+                return "B positivo (B +)";
+            case 6:
+                return "B negativo (B-)";
+            case 7:
+                return "AB negativo (AB-)";
+            case 8:
+                return "AB positivo (AB+)";
+            default:
+                return "Otro";
+        }
+    }
 }
