@@ -6,6 +6,7 @@
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -45,10 +46,21 @@ public class AnioLectivo implements Serializable {
     private List<CargaAcademica> cargaAcademicaList;
 
     public AnioLectivo() {
+        grupoList = new ArrayList<>();
+        cargaAcademicaList = new ArrayList<>();
     }
 
     public AnioLectivo(Integer idAnioLectivo) {
         this.idAnioLectivo = idAnioLectivo;
+        grupoList = new ArrayList<>();
+        cargaAcademicaList = new ArrayList<>();
+    }
+
+    public AnioLectivo(Integer idAnioLectivo, String nombre) {
+        this.idAnioLectivo = idAnioLectivo;
+        this.nombre = nombre;
+        grupoList = new ArrayList<>();
+        cargaAcademicaList = new ArrayList<>();
     }
 
     public Integer getIdAnioLectivo() {

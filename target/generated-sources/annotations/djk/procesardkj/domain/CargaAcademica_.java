@@ -10,7 +10,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2022-06-25T18:40:41")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2022-06-25T18:59:07")
 @StaticMetamodel(CargaAcademica.class)
 public class CargaAcademica_ { 
 

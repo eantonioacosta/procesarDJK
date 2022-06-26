@@ -212,7 +212,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuItem6.setText("Años Lectivos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenuItemAniosLectivos(evt);
             }
         });
         jMenu5.add(jMenuItem6);
@@ -427,11 +427,11 @@ public class ViewAdministrador extends javax.swing.JFrame {
 //        formUsuarios.setVisible(true);
     }//GEN-LAST:event_menuItemUsuarios
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-//        FormAniosLectivos formAnio = new FormAniosLectivos();
-//        layeredPanel.add(formAnio);
-//        formAnio.setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    private void jMenuItemAniosLectivos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAniosLectivos
+        ViewAniosLectivos formAnio = new ViewAniosLectivos();
+        layeredPanel.add(formAnio);
+        formAnio.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAniosLectivos
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
 //        FormGrupos formGrupo = new FormGrupos();
