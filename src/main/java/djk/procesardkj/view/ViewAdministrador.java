@@ -457,9 +457,9 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemMatricularActionPerformed
 
     private void menuItemAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAreasActionPerformed
-//        FormAreas formAreas = new FormAreas();
-//        layeredPanel.add(formAreas);
-//        formAreas.setVisible(true);
+        ViewAsignaturas formAreas = new ViewAsignaturas();
+        layeredPanel.add(formAreas);
+        formAreas.setVisible(true);
     }//GEN-LAST:event_menuItemAreasActionPerformed
 
     private void itemAsignaruraGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAsignaruraGruposActionPerformed

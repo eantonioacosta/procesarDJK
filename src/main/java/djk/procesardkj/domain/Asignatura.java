@@ -1,10 +1,13 @@
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,8 +35,8 @@ public class Asignatura implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)    
     @Column(name = "id_asignatura")
     private Integer idAsignatura;
     @Size(max = 45)
@@ -52,6 +55,17 @@ public class Asignatura implements Serializable {
 
     public Asignatura() {
     }
+
+    public Asignatura(Integer idAsignatura, String nombre, Integer iHoraria, String nombreCompleto, Integer porcentaje, Area area) {
+        this.idAsignatura = idAsignatura;
+        this.nombre = nombre;
+        this.iHoraria = iHoraria;
+        this.nombreCompleto = nombreCompleto;
+        this.porcentaje = porcentaje;
+        this.area = area;
+        this.cargaAcademicaList = new ArrayList<>();
+    }
+    
 
     public Asignatura(Integer idAsignatura) {
         this.idAsignatura = idAsignatura;

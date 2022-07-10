@@ -6,6 +6,7 @@
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -47,7 +48,15 @@ public class Area implements Serializable {
 
     public Area(Integer idArea) {
         this.idArea = idArea;
+        asignaturaList= new ArrayList<>();
     }
+
+    public Area(Integer idArea, String nombre) {
+        this.idArea = idArea;
+        this.nombre = nombre;
+        asignaturaList= new ArrayList<>();
+    }
+    
 
     public Integer getIdArea() {
         return idArea;
