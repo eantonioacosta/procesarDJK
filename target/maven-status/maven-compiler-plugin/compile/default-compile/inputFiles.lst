@@ -6,11 +6,14 @@ D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\ObservacionJpaController
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewLogin.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\MatriculaJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Usuario.java
+D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewGrupos.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Nota.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\EstudianteJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerAreasAsignaturas.java
+D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\Render.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Asignatura.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Estudiante.java
+D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerCargaAcademica.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\UsuarioJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\AreaJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\PadreJpaController.java
@@ -33,6 +36,7 @@ D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerAnioLecti
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Matricula.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewAsignaturas.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Area.java
+D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerGrupo.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\CargaAcademica.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\AnioLectivoJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewDocente.java

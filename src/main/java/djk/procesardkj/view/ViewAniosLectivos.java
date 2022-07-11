@@ -27,8 +27,10 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
     private void cargarTabla() {
         try {
             table.setModel(control.getTabla());
-            TableColumnModel columnModel = table.getColumnModel();
-            columnModel.getColumn(0).setPreferredWidth(10);
+            table.getColumnModel().getColumn(0).setResizable(false);
+            table.getColumnModel().getColumn(0).setPreferredWidth(60);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(1).setPreferredWidth(400);
         } catch (Exception ex) {
                 JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                         "Excepcion", JOptionPane.WARNING_MESSAGE);
@@ -75,14 +77,6 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
         jScrollPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         table.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
         table.setDragEnabled(true);
         jScrollPane1.setViewportView(table);
 
@@ -263,8 +257,9 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
+           
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+                    "Excepcion, revisar conexion a internet", JOptionPane.WARNING_MESSAGE);
         }
 
     }

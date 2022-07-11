@@ -4,6 +4,7 @@ package djk.procesardkj.controller;
 import djk.procesardkj.datos.AnioLectivoJpaController;
 import djk.procesardkj.domain.AnioLectivo;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ControllerAnioLectivo {
@@ -45,10 +46,10 @@ public class ControllerAnioLectivo {
     }
 
     public DefaultTableModel getTabla() throws Exception{
-        String[] columnas = {"INDICE", "NOMBRE"};
+        String[] columnas = {"NRO", "NOMBRE"};
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
-
+        
         String[] fila = new String[columnas.length];
         for (AnioLectivo anio : dao.findAnioLectivoEntities()) {
             fila[0] = "" + anio.getIdAnioLectivo();
