@@ -434,9 +434,9 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAniosLectivos
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-//        FormGrupos formGrupo = new FormGrupos();
-//        layeredPanel.add(formGrupo);
-//        formGrupo.setVisible(true);
+        ViewGrupos formGrupo = new ViewGrupos();
+        layeredPanel.add(formGrupo);
+        formGrupo.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed

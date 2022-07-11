@@ -6,6 +6,7 @@
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -60,6 +61,19 @@ public class Grupo implements Serializable {
 
     public Grupo() {
     }
+
+    public Grupo(Integer idGrupo, Integer nombre, Integer jornada, Integer indiceGrupo, AnioLectivo anioLectivo, Docente docente) {
+        this.idGrupo = idGrupo;
+        this.nombre = nombre;
+        this.jornada = jornada;
+        this.indiceGrupo = indiceGrupo;
+        this.anioLectivo = anioLectivo;
+        this.docente = docente;
+        cargaAcademicaList= new ArrayList<>();
+        matriculaList = new ArrayList<>();
+    }
+    
+    
 
     public Grupo(Integer idGrupo) {
         this.idGrupo = idGrupo;
@@ -152,6 +166,33 @@ public class Grupo implements Serializable {
     @Override
     public String toString() {
         return "djk.procesardkj.domain.Grupo[ idGrupo=" + idGrupo + " ]";
+    }
+    
+        public String getNombreTexto(){
+        switch(nombre){
+            case 0: return "Jardin";
+            case 1: return "Transicion";
+            case 2: return "Primero";
+            case 3: return "Segundo";
+            case 4: return "Tercero";
+            case 5: return "Cuarto";
+            case 6: return "Quinto";
+            case 7: return "Sexto";
+            case 8: return "Septimo";
+            case 9: return "Octavo";
+            case 10: return "Noveno";
+            case 11: return "Decimo";
+            case 12: return "Once";
+            default: return "Otro";
+        }
+    }
+    public String getJornadaTexto(){
+        switch(jornada){
+            case 1: return "Mañana";
+            case 2: return "Tarde";
+            case 3: return "Nocturna";
+            default : return "Otra";
+        }
     }
     
 }
