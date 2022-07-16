@@ -12,13 +12,23 @@
             <EtchetBorder/>
           </Border>
         </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[458, 40]"/>
+        </Property>
       </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenuInicio">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/hogar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="INICIO"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="11"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[100, 20]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -73,6 +83,9 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenu6">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/gorro-de-graduacion.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alumnos"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -152,6 +165,9 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenu8">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/usuarios-alt.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Docentes"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -184,9 +200,15 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuProcesos">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/ajustes.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="PROCESOS"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -209,9 +231,15 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/libro-alt.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="CONSULTAS"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -237,9 +265,15 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/estadisticas.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="REPORTES"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[110, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -318,17 +352,29 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/bulbo.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="UTILIDADES"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 28]"/>
             </Property>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/interrogatorio.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="MAS OPCIONES"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[140, 28]"/>
             </Property>
           </Properties>
           <SubComponents>

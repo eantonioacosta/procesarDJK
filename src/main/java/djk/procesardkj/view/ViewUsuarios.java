@@ -140,7 +140,7 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        comboNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion:", "Administrador", "Docente" }));
+        comboNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion:", "Administrador" }));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnGuardar.setText("GUARDAR");

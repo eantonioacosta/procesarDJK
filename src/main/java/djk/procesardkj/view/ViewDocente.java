@@ -6,6 +6,8 @@ import djk.procesardkj.domain.Usuario;
 import java.awt.Component;
 import java.awt.Container;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -33,15 +35,22 @@ public class ViewDocente extends javax.swing.JInternalFrame {
     private void cargarTabla() {
         try {
             table.setModel(control.getTabla());
+            table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = table.getColumnModel();
-
-            columnModel.getColumn(0).setPreferredWidth(25);
-            columnModel.getColumn(1).setPreferredWidth(100);
+            columnModel.getColumn(0).setPreferredWidth(30);
+            columnModel.getColumn(1).setPreferredWidth(150);
             columnModel.getColumn(2).setPreferredWidth(180);
-            columnModel.getColumn(5).setPreferredWidth(30);
-            columnModel.getColumn(11).setPreferredWidth(25);
+            columnModel.getColumn(3).setPreferredWidth(100);
+            columnModel.getColumn(4).setPreferredWidth(100);
+            columnModel.getColumn(5).setPreferredWidth(100);
+            columnModel.getColumn(6).setPreferredWidth(100);
+            columnModel.getColumn(7).setPreferredWidth(100);
+            columnModel.getColumn(8).setPreferredWidth(180);
+            columnModel.getColumn(9).setPreferredWidth(150);
+            columnModel.getColumn(10).setPreferredWidth(150);
+
         } catch (Exception ex) {
-            
+
         }
     }
 
@@ -92,6 +101,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         textoFiltro = new javax.swing.JTextField();
         comboFilter = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Creacion y Modificacion de datos para Docentes");
@@ -123,6 +133,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         panelCentral.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1160, -1));
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
         btnNuevo.setText("NUEVO");
         btnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -130,9 +141,10 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 160, -1));
+        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 160, -1));
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,9 +152,10 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 170, -1));
+        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 170, -1));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +163,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        panelCentral.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 250, 150, -1));
+        panelCentral.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 250, 150, -1));
 
         panelCreacion.setBackground(new java.awt.Color(255, 255, 255));
         panelCreacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 153, 153), null), "Creacion/Modificacion de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -184,6 +197,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         panelCreacion.add(comboEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 242, -1));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +207,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         panelCreacion.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 200, -1));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,10 +302,14 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                 comboFilterActionPerformed(evt);
             }
         });
-        panelCentral.add(comboFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 110, -1));
+        panelCentral.add(comboFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 140, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/imgDocente_1.png"))); // NOI18N
         panelCentral.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 260, 280));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        jLabel14.setText("BUSCAR:");
+        panelCentral.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -366,14 +385,14 @@ public class ViewDocente extends javax.swing.JInternalFrame {
 
     private void comboFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFilterActionPerformed
         int opc = comboFilter.getSelectedIndex();
-        switch(opc){
+        switch (opc) {
             case 1:
                 break;
             case 2:
             case 3:
             case 4:
-                
-            break;
+
+                break;
         }
     }//GEN-LAST:event_comboFilterActionPerformed
     private void botonEliminar() {
@@ -390,7 +409,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                 } catch (NullPointerException ex) {
                     JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", 
+                    JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion",
                             JOptionPane.WARNING_MESSAGE);
                 }
 
@@ -401,7 +420,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
 
     private void modificar() {
         try {
-            Docente docente = obtenerCampos();
+            Docente docente = obtenerCamposActualizar();
             control.actualizar(docente);
             JOptionPane.showMessageDialog(panelCentral, "Docente modificado exitosamente.",
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -484,11 +503,39 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         String password = String.valueOf(pass.getPassword());
 
         Usuario usuario = new Usuario(identificacion, nombres, password, 2);
-        docente = new Docente(codigo, nombres, apellidos, estado, fechaNacimiento, tipoSangre, direccion, 
+        docente = new Docente(codigo, nombres, apellidos, estado, fechaNacimiento, tipoSangre, direccion,
                 telefono, correo, ciudad, titulo, usuario);
-        
+
         return docente;
 
+    }
+
+    private Docente obtenerCamposActualizar() {
+        int codigo = Integer.parseInt(labelCodigo.getText());
+
+        try {
+            Docente docente;
+            docente = control.buscarPorCodigo(codigo);
+            docente.setNombres(textoNombre.getText());
+            docente.setApellidos( textoApellidos.getText());
+            docente.setDireccion(textoDireccion.getText());
+            docente.setCorreo(textoCorreo.getText());
+            docente.setTelefono(textoTelefono.getText());
+            docente.setTitulo(textoTitulo.getText());
+            docente.setCiudad(textoCiudad.getText());
+            
+            Long fecha = calendarFecha.getDate().getTime();
+            Date fechaNacimiento = new Date(fecha);
+            
+            docente.setFechaNacimiento(fechaNacimiento);
+            docente.setTipoSangre(comboTipoSangre.getSelectedIndex());
+            docente.setEstado(comboEstado.getSelectedIndex());
+            
+            return docente;
+        } catch (Exception ex) {
+            Logger.getLogger(ViewDocente.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     private void pintarCampos(Docente docente) {
@@ -579,6 +626,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -128,6 +128,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/documento_1.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="NUEVO"/>
             <Property name="horizontalTextPosition" type="int" value="10"/>
           </Properties>
@@ -136,7 +139,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="540" y="250" width="160" height="-1"/>
+              <AbsoluteConstraints x="570" y="250" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -144,6 +147,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/editar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MODIFICAR"/>
             <Property name="horizontalTextPosition" type="int" value="10"/>
@@ -153,7 +159,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="720" y="250" width="170" height="-1"/>
+              <AbsoluteConstraints x="790" y="250" width="170" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -161,6 +167,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/IMGS/basura.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ELIMINAR"/>
             <Property name="horizontalTextPosition" type="int" value="10"/>
@@ -170,7 +179,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="910" y="250" width="150" height="-1"/>
+              <AbsoluteConstraints x="1010" y="250" width="150" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -296,6 +305,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/controlar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="GUARDAR"/>
               </Properties>
               <Events>
@@ -311,6 +323,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/varita-magica.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="CANCELAR"/>
               </Properties>
@@ -565,7 +580,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="250" width="110" height="-1"/>
+              <AbsoluteConstraints x="390" y="250" width="140" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -578,6 +593,19 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="10" y="280" width="260" height="280"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="3"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="BUSCAR:"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="60" y="250" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

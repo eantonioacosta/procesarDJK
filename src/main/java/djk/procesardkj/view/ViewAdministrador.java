@@ -181,9 +181,13 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(458, 40));
 
+        jMenuInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/hogar.png"))); // NOI18N
         jMenuInicio.setText("INICIO");
         jMenuInicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuInicio.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jMenuInicio.setPreferredSize(new java.awt.Dimension(100, 20));
 
         jMenu5.setText("Logistica");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -220,6 +224,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuInicio.add(jMenu5);
         jMenuInicio.add(jSeparator5);
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/gorro-de-graduacion.png"))); // NOI18N
         jMenu6.setText("Alumnos");
         jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -276,6 +281,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuInicio.add(jMenu7);
         jMenuInicio.add(jSeparator7);
 
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/usuarios-alt.png"))); // NOI18N
         jMenu8.setText("Docentes");
         jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -298,8 +304,10 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuInicio);
 
+        jMenuProcesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/ajustes.png"))); // NOI18N
         jMenuProcesos.setText("PROCESOS");
         jMenuProcesos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuProcesos.setPreferredSize(new java.awt.Dimension(120, 28));
 
         jMenuItem3.setText("Calificacion / Valoracion");
         jMenuProcesos.add(jMenuItem3);
@@ -312,8 +320,10 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuProcesos);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/libro-alt.png"))); // NOI18N
         jMenu3.setText("CONSULTAS");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(120, 28));
 
         jMenuItem17.setText("General");
         jMenu3.add(jMenuItem17);
@@ -331,8 +341,10 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/estadisticas.png"))); // NOI18N
         jMenu1.setText("REPORTES");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu1.setPreferredSize(new java.awt.Dimension(110, 28));
 
         jMenu9.setText("Planillas");
 
@@ -378,12 +390,16 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/bulbo.png"))); // NOI18N
         jMenu2.setText("UTILIDADES");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu2.setPreferredSize(new java.awt.Dimension(120, 28));
         jMenuBar1.add(jMenu2);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/interrogatorio.png"))); // NOI18N
         jMenu4.setText("MAS OPCIONES");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu4.setPreferredSize(new java.awt.Dimension(140, 28));
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         jMenuItem4.setText("Cerrar Sesion");

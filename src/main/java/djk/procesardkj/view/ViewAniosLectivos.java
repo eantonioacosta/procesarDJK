@@ -1,11 +1,11 @@
 package djk.procesardkj.view;
 
-
 import djk.procesardkj.controller.ControllerAnioLectivo;
 import djk.procesardkj.domain.AnioLectivo;
 import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
 public class ViewAniosLectivos extends javax.swing.JInternalFrame {
@@ -27,14 +27,12 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
     private void cargarTabla() {
         try {
             table.setModel(control.getTabla());
-            table.getColumnModel().getColumn(0).setResizable(false);
-            table.getColumnModel().getColumn(0).setPreferredWidth(60);
-            table.getColumnModel().getColumn(1).setResizable(false);
-            table.getColumnModel().getColumn(1).setPreferredWidth(400);
+            TableColumnModel columnModel = table.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(30);
         } catch (Exception ex) {
-                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                        "Excepcion", JOptionPane.WARNING_MESSAGE);
-            }
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
+                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -83,6 +81,7 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 16, 380, 190));
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
         btnNuevo.setText("NUEVO");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +90,7 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
         });
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,16 +111,18 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
         panelCreacion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
         panelCreacion.add(textoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 242, -1));
 
-        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        panelCreacion.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 150, -1));
+        panelCreacion.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, -1));
 
-        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,11 +145,15 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
             .addGroup(panelCentralLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
                 .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelCentralLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelCentralLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(panelCentralLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(panelCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -161,9 +167,9 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
                     .addGroup(panelCentralLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(19, 19, 19)
                         .addComponent(btnNuevo)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addComponent(btnModificar)))
                 .addGap(19, 19, 19)
                 .addComponent(panelCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,13 +208,14 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
     private void modificar() {
         try {
-            AnioLectivo lectivo = obtenerCampos();
+            AnioLectivo lectivo = obtenerCamposActualizar();
             control.actualizar(lectivo);
             JOptionPane.showMessageDialog(panelCentral, "Año lectivo modificado exitosamente",
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }  catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -257,7 +264,7 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-           
+
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "Excepcion, revisar conexion a internet", JOptionPane.WARNING_MESSAGE);
         }
@@ -275,6 +282,23 @@ public class ViewAniosLectivos extends javax.swing.JInternalFrame {
 
         return new AnioLectivo(codigo, nombre);
 
+    }
+
+    private AnioLectivo obtenerCamposActualizar() {
+        try {
+            int codigo = Integer.parseInt(textoCodigo.getText());
+            AnioLectivo lectivo = control.buscarPorCodigo(codigo);
+            lectivo.setNombre(textoNombre.getText());
+            return lectivo;
+            
+        } catch (NumberFormatException ex) {
+          JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion numerica", JOptionPane.QUESTION_MESSAGE);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
+        }
+        return null;
     }
 
     private void pintarCampos(AnioLectivo lectivo) {

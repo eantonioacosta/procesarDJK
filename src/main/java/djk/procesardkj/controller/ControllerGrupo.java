@@ -30,6 +30,9 @@ public class ControllerGrupo {
         if (grupo.getIdGrupo()== 0) {
             throw new NullPointerException("Id vacia");
         }
+        if (grupo.getJornada() == 0 || grupo.getJornada() == -1) {
+            throw new NullPointerException("Favor seleccionar el nivel");
+        }
         dao.edit(grupo);
     }
 
@@ -85,7 +88,7 @@ public class ControllerGrupo {
             fila[1] = grupo.getNombreTexto();
             fila[2] = grupo.getJornadaTexto();
             fila[3] = "" + grupo.getIndiceGrupo();
-            fila[4] = grupo.getDocente().getNombreCompleto();
+            fila[4] = (grupo.getDocente()!=null)?  grupo.getDocente().getNombreCompleto() : "";
             modelo.addRow(fila);
         }
         return modelo;

@@ -58,15 +58,16 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Usuario:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Contraseña:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Año Lectivo:");
 
+        comboAnio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         comboAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion:" }));
         comboAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -74,6 +75,7 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
+        textUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         textUsuario.setText("1003122119");
         textUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +88,7 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
+        TextPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TextPassword.setText("000");
         TextPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -93,7 +96,8 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
-        botonEntrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        botonEntrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/comprobacion-de-insignias.png"))); // NOI18N
         botonEntrar.setText("ENTRAR");
         botonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +105,7 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
-        botonSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        botonSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botonSalir.setText("SALIR");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,16 +125,16 @@ public class ViewLogin extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboAnio, 0, 213, Short.MAX_VALUE)
                     .addComponent(textUsuario)
-                    .addComponent(TextPassword))
+                    .addComponent(TextPassword)
+                    .addComponent(comboAnio, 0, 223, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(botonEntrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(botonSalir)
-                .addGap(49, 49, 49))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(botonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,11 +151,11 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(comboAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonSalir)
-                    .addComponent(botonEntrar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(botonEntrar)
+                    .addComponent(botonSalir))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/imgLogo.jpg"))); // NOI18N
@@ -164,13 +168,13 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel6)
             .addGroup(panelCentralLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

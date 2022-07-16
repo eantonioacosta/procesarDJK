@@ -32,6 +32,9 @@ public class ControllerDocente {
     }
 
     public void actualizar(Docente docente) throws Exception{
+        if(docente==null){
+            throw new NullPointerException("Error en los datos suministrados");
+        }
         dao.edit(docente);
     }
 

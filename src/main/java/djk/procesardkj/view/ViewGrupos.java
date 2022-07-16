@@ -12,7 +12,10 @@ import djk.procesardkj.domain.Docente;
 import djk.procesardkj.domain.Grupo;
 import java.awt.Component;
 import java.awt.Container;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
 public class ViewGrupos extends javax.swing.JInternalFrame {
@@ -41,8 +44,13 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
     private void cargarTabla() {
         try {
             table.setModel(controlGrupo.getTabla(anioLectivo.getIdAnioLectivo()));
+            table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = table.getColumnModel();
-            columnModel.getColumn(0).setPreferredWidth(25);
+            columnModel.getColumn(0).setPreferredWidth(30);
+            columnModel.getColumn(1).setPreferredWidth(150);
+            columnModel.getColumn(2).setPreferredWidth(180);
+            columnModel.getColumn(3).setPreferredWidth(100);
+            columnModel.getColumn(4).setPreferredWidth(250);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "Excepcion", JOptionPane.WARNING_MESSAGE);
@@ -126,31 +134,37 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         panelCentral.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 690, -1));
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
         btnNuevo.setText("NUEVO");
+        btnNuevo.setPreferredSize(new java.awt.Dimension(120, 25));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
-        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 96, -1));
+        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 140, -1));
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
+        btnModificar.setPreferredSize(new java.awt.Dimension(120, 25));
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 110, -1));
+        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 140, -1));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setPreferredSize(new java.awt.Dimension(120, 25));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        panelCentral.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 96, -1));
+        panelCentral.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 130, -1));
 
         panelCreacion.setBackground(new java.awt.Color(255, 255, 255));
         panelCreacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 153, 153), null), "Creacion/Modificacion de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -167,6 +181,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         ComboDirector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion:" }));
         panelCreacion.add(ComboDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 170, -1));
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +190,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         });
         panelCreacion.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, -1));
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,7 +306,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
 
     private void modificar() {
         try {
-            Grupo grupo = obtenerCampos();
+            Grupo grupo = obtenerCamposActualizar();
             controlGrupo.actualizar(grupo);
 
             JOptionPane.showMessageDialog(panelCentral, "Grado modificado exitosamente. ",
@@ -370,6 +386,30 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
 
     }
 
+    private Grupo obtenerCamposActualizar() {
+        int idGrupo = Integer.parseInt(labelCodigo.getText());
+        try {
+            Grupo grupo = controlGrupo.buscarPorCodigo(idGrupo);
+            grupo.setNombre(listaGrado.getSelectedIndex());
+            grupo.setIndiceGrupo((int) spinner.getValue());
+            grupo.setJornada(comboJornada.getSelectedIndex());
+
+            int indiceDocente = ComboDirector.getSelectedIndex() - 1;
+            Docente docente = null;
+            try {
+                docente = controlDocente.verDocentesActivo().get(indiceDocente);
+            } catch (Exception ex) {
+                
+            }
+            grupo.setDocente(docente);
+            return grupo;
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),"Excepcion", JOptionPane.WARNING_MESSAGE);
+        }
+        return null;
+    }
+
     private void pintarCampos(Grupo grupo) {
         labelCodigo.setText("" + grupo.getIdGrupo());
         listaGrado.setSelectedIndex(grupo.getNombre());
@@ -378,8 +418,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         try {
             ComboDirector.setSelectedIndex(controlDocente.DocenteActivoIndice(grupo.getDocente()));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+            ComboDirector.setSelectedIndex(0);
         }
 
     }

@@ -22,7 +22,13 @@ public class ControllerAnioLectivo {
         dao.create(lectivo);
     }
 
-    public void actualizar(AnioLectivo lectivo) throws Exception{
+    public void actualizar(AnioLectivo lectivo) throws Exception, NullPointerException{
+        if(lectivo==null){
+            throw new NullPointerException("Error en los datos suministrados");
+        }
+        if(lectivo.getNombre().trim().length()==0){
+            throw new NullPointerException("Favor ingresar nombre");
+        }
         dao.edit(lectivo);
     }
 
