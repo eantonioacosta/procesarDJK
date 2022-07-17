@@ -16,8 +16,8 @@ public class ControllerUsuario {
     }
 
     public void registrar(Usuario usuario) throws Exception, NullPointerException {
-        if (usuario.getCodigo().trim().length() == 0) {
-            throw new NullPointerException("Contraseña vacia");
+        if (usuario.getNombre().trim().length() == 0) {
+            throw new NullPointerException("Nombre vacio");
         }
         if (usuario.getClave().trim().length() == 0) {
             throw new NullPointerException("Contraseña vacia");
@@ -29,6 +29,15 @@ public class ControllerUsuario {
     }
 
     public void actualizar(Usuario usuario) throws Exception, NonexistentEntityException {
+        if (usuario.getNombre().trim().length() == 0) {
+            throw new NullPointerException("Nombre vacio");
+        }
+        if (usuario.getClave().trim().length() == 0) {
+            throw new NullPointerException("Contraseña vacia");
+        }
+        if(usuario.getNivelUsuario()==0 || usuario.getNivelUsuario()==-1){
+            throw new NullPointerException("Favor seleccionar el nivel");
+        }
         dao.edit(usuario);
     }
 

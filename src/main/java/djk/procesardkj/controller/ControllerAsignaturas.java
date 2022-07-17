@@ -25,6 +25,12 @@ public class ControllerAsignaturas {
     }
 
     public void actualizar(Asignatura asignatura) throws Exception{
+        if(asignatura.getNombre().trim().length()==0){
+            throw new NullPointerException("Favor ingresar el nombre");
+        }
+        if(asignatura.getArea()==null){
+            throw new NullPointerException("Favor de seleccionar el area");
+        }
         dao.edit(asignatura);
     }
 

@@ -103,22 +103,23 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jLabelAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelAnio.setText("Año lectivo");
 
-        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabelUsuario.setText("Nombre del Usuario");
 
-        jLabelPerfil.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelPerfil.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelPerfil.setForeground(new java.awt.Color(0, 153, 51));
         jLabelPerfil.setText("Perfil");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Perfil:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Año lectivo:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -128,15 +129,15 @@ public class ViewAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(jLabelAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +168,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
             .addGroup(layeredPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         layeredPanelLayout.setVerticalGroup(
             layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,12 +186,13 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/hogar.png"))); // NOI18N
         jMenuInicio.setText("INICIO");
-        jMenuInicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuInicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuInicio.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jMenuInicio.setPreferredSize(new java.awt.Dimension(100, 20));
 
         jMenu5.setText("Logistica");
-        jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu5.setPreferredSize(new java.awt.Dimension(179, 35));
 
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem5.setText("Usuarios");
@@ -226,7 +228,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/gorro-de-graduacion.png"))); // NOI18N
         jMenu6.setText("Alumnos");
-        jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu6.setPreferredSize(new java.awt.Dimension(179, 35));
 
         MenuItemMatricular.setText("Matricular");
         MenuItemMatricular.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +253,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuInicio.add(jSeparator8);
 
         jMenu7.setText("Areas Academicas");
-        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu7.setPreferredSize(new java.awt.Dimension(179, 35));
 
         menuItemAreas.setText("Areas Asignatura");
         menuItemAreas.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +287,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/usuarios-alt.png"))); // NOI18N
         jMenu8.setText("Docentes");
-        jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu8.setPreferredSize(new java.awt.Dimension(179, 35));
 
         jMenuItem11.setText("Crear / Modificar");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -306,8 +311,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuProcesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/ajustes.png"))); // NOI18N
         jMenuProcesos.setText("PROCESOS");
-        jMenuProcesos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuProcesos.setPreferredSize(new java.awt.Dimension(120, 28));
+        jMenuProcesos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuProcesos.setPreferredSize(new java.awt.Dimension(130, 28));
 
         jMenuItem3.setText("Calificacion / Valoracion");
         jMenuProcesos.add(jMenuItem3);
@@ -322,8 +327,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/libro-alt.png"))); // NOI18N
         jMenu3.setText("CONSULTAS");
-        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(120, 28));
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(130, 28));
 
         jMenuItem17.setText("General");
         jMenu3.add(jMenuItem17);
@@ -343,8 +348,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/estadisticas.png"))); // NOI18N
         jMenu1.setText("REPORTES");
-        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(110, 28));
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu1.setPreferredSize(new java.awt.Dimension(120, 28));
 
         jMenu9.setText("Planillas");
 
@@ -392,14 +397,14 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/bulbo.png"))); // NOI18N
         jMenu2.setText("UTILIDADES");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenu2.setPreferredSize(new java.awt.Dimension(120, 28));
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu2.setPreferredSize(new java.awt.Dimension(130, 28));
         jMenuBar1.add(jMenu2);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/interrogatorio.png"))); // NOI18N
         jMenu4.setText("MAS OPCIONES");
-        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenu4.setPreferredSize(new java.awt.Dimension(140, 28));
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu4.setPreferredSize(new java.awt.Dimension(150, 28));
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         jMenuItem4.setText("Cerrar Sesion");

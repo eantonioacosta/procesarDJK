@@ -6,6 +6,8 @@ import djk.procesardkj.datos.exceptions.NonexistentEntityException;
 import djk.procesardkj.domain.Usuario;
 import java.awt.Component;
 import java.awt.Container;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ViewUsuarios extends javax.swing.JInternalFrame {
@@ -344,7 +346,7 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
 
     private void modificar() {
         try {
-            Usuario usuario = obtenerCampos();
+            Usuario usuario = obtenerCamposActualizar();
             control.actualizar(usuario);
             JOptionPane.showMessageDialog(panelCentral, "Usuario modificado exitosamente",
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -417,6 +419,19 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
 
         return new Usuario(codigo, nombre, clave, nivel);
 
+    }
+    
+    private Usuario obtenerCamposActualizar() {
+        String codigo = textoCodigo.getText();
+        try {
+            Usuario user = control.buscarPorCodigo(codigo);
+            user.setNombre(textoNombre.getText());
+            user.setClave( textoClave.getText());
+            user.setNivelUsuario(comboNivel.getSelectedIndex());
+            return user;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private void pintarCampos(Usuario user) {

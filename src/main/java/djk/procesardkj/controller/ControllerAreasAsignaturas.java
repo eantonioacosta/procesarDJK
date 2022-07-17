@@ -25,6 +25,9 @@ public class ControllerAreasAsignaturas {
     }
 
     public void actualizar(Area area) throws IllegalOrphanException, NonexistentEntityException, Exception  {
+        if (area.getNombre().trim().length() == 0) {
+            throw new NullPointerException("Favor ingresar el nombre del area!");
+        }
         dao.edit(area);
     }
 
@@ -56,7 +59,7 @@ public class ControllerAreasAsignaturas {
 
     public DefaultTableModel getTabla() throws Exception {
 
-        String[] columnas = {"CODIGO", "NOMBRE", "# ASIGNATURAS"};
+        String[] columnas = {"#", "NOMBRE", "# ASIGNATURAS"};
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
         Object fila[] = new Object[columnas.length];

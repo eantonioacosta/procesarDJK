@@ -1,7 +1,5 @@
 package djk.procesardkj.view;
 
-
-
 import djk.procesardkj.controller.ControllerAreasAsignaturas;
 import djk.procesardkj.controller.ControllerAsignaturas;
 import djk.procesardkj.datos.exceptions.IllegalOrphanException;
@@ -11,7 +9,11 @@ import djk.procesardkj.domain.Asignatura;
 import java.awt.Component;
 import java.awt.Container;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
 
 public class ViewAsignaturas extends javax.swing.JInternalFrame {
 
@@ -35,6 +37,11 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
     private void cargarTablaArea() {
         try {
             tablaArea.setModel(controlArea.getTabla());
+            tablaArea.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            TableColumnModel columnModel = tablaArea.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(35);
+            columnModel.getColumn(1).setPreferredWidth(400);
+            columnModel.getColumn(2).setPreferredWidth(70);
             cargarComboArea();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
@@ -45,8 +52,15 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
     private void cargarTablaAsignaturas() {
         try {
             tablaAsignatura.setModel(controlAsignatura.getTabla());
+            tablaAsignatura.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            TableColumnModel columnModel = tablaAsignatura.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(35);
+            columnModel.getColumn(1).setPreferredWidth(200);
+            columnModel.getColumn(2).setPreferredWidth(300);
+            columnModel.getColumn(3).setPreferredWidth(70);
+            columnModel.getColumn(4).setPreferredWidth(200);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), 
+            JOptionPane.showMessageDialog(PanelArea, ex.getMessage(),
                     "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -97,78 +111,84 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Creacion y modificacion de Areas/Asignaturas");
         setMinimumSize(new java.awt.Dimension(859, 640));
-        setPreferredSize(new java.awt.Dimension(859, 640));
+        setPreferredSize(new java.awt.Dimension(1000, 640));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         PanelArea.setBackground(new java.awt.Color(255, 255, 255));
         PanelArea.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Areas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelArea.setPreferredSize(new java.awt.Dimension(909, 180));
         PanelArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNuevoArea.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNuevoArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
         btnNuevoArea.setText("NUEVO");
         btnNuevoArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoAreaActionPerformed(evt);
             }
         });
-        PanelArea.add(btnNuevoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
+        PanelArea.add(btnNuevoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 120, -1));
 
         btnModificarArea.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnModificarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
         btnModificarArea.setText("MODIFICAR");
         btnModificarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarAreaActionPerformed(evt);
             }
         });
-        PanelArea.add(btnModificarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
+        PanelArea.add(btnModificarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
         btnEliminarArea.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEliminarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
         btnEliminarArea.setText("ELIMINAR");
         btnEliminarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarAreaActionPerformed(evt);
             }
         });
-        PanelArea.add(btnEliminarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        PanelArea.add(btnEliminarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
 
         panelCreacionArea.setBackground(new java.awt.Color(255, 255, 255));
         panelCreacionArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creacion / Modificacion de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         panelCreacionArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel1.setText("Codigo:");
-        panelCreacionArea.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panelCreacionArea.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Nombre:");
-        panelCreacionArea.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-        panelCreacionArea.add(textoNombreArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 240, -1));
+        panelCreacionArea.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        panelCreacionArea.add(textoNombreArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 240, -1));
 
         btnGuardarArea.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnGuardarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
         btnGuardarArea.setText("GUARDAR");
         btnGuardarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarAreaActionPerformed(evt);
             }
         });
-        panelCreacionArea.add(btnGuardarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        panelCreacionArea.add(btnGuardarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         btnCancelarArea.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         btnCancelarArea.setText("CANCELAR");
         btnCancelarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarAreaActionPerformed(evt);
             }
         });
-        panelCreacionArea.add(btnCancelarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        panelCreacionArea.add(btnCancelarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
         labelCodigoArea.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelCodigoArea.setForeground(new java.awt.Color(204, 0, 0));
         labelCodigoArea.setText("0");
-        panelCreacionArea.add(labelCodigoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 55, -1));
+        panelCreacionArea.add(labelCodigoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 10, 40, -1));
 
-        PanelArea.add(panelCreacionArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 65, 340, 110));
+        PanelArea.add(panelCreacionArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 390, 110));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Areas creadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -181,7 +201,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -191,7 +211,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
                 .addGap(0, 17, Short.MAX_VALUE))
         );
 
-        PanelArea.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 420, 160));
+        PanelArea.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 160));
 
         panelAsignaturas.setBackground(new java.awt.Color(255, 255, 255));
         panelAsignaturas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Asignaturas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -215,7 +235,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -226,6 +246,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         );
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
         btnNuevo.setText("NUEVO");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +255,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         });
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +264,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         });
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setMaximumSize(new java.awt.Dimension(97, 23));
         btnEliminar.setMinimumSize(new java.awt.Dimension(97, 23));
@@ -253,117 +276,67 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
 
         panelCreacionAsignatura.setBackground(new java.awt.Color(255, 255, 255));
         panelCreacionAsignatura.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creacion / Modificacion de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        panelCreacionAsignatura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Codigo:");
+        panelCreacionAsignatura.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Nombre Menú:");
+        panelCreacionAsignatura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 63, -1, -1));
 
         spinnerHoraria.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        panelCreacionAsignatura.add(spinnerHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 55, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Intensidad horaria:");
+        panelCreacionAsignatura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Nombre Completo:");
+        panelCreacionAsignatura.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 94, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Porcentaje de Nota:");
+        panelCreacionAsignatura.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Area:");
+        panelCreacionAsignatura.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 125, -1, -1));
+        panelCreacionAsignatura.add(textoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 61, 201, -1));
+        panelCreacionAsignatura.add(textoNombreCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 92, 341, -1));
 
         comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un area:" }));
+        panelCreacionAsignatura.add(comboArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 123, 341, -1));
 
         comboPorcentaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%" }));
+        panelCreacionAsignatura.add(comboPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
+        panelCreacionAsignatura.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
+        panelCreacionAsignatura.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
 
         labelCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelCodigo.setForeground(new java.awt.Color(204, 0, 0));
         labelCodigo.setText("0");
-
-        javax.swing.GroupLayout panelCreacionAsignaturaLayout = new javax.swing.GroupLayout(panelCreacionAsignatura);
-        panelCreacionAsignatura.setLayout(panelCreacionAsignaturaLayout);
-        panelCreacionAsignaturaLayout.setHorizontalGroup(
-            panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCreacionAsignaturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelCreacionAsignaturaLayout.createSequentialGroup()
-                        .addComponent(labelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(163, 163, 163)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(spinnerHoraria, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
-                    .addGroup(panelCreacionAsignaturaLayout.createSequentialGroup()
-                        .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCreacionAsignaturaLayout.createSequentialGroup()
-                                .addComponent(textoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7))
-                            .addComponent(comboArea, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textoNombreCompleto, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(48, 48, 48))
-        );
-        panelCreacionAsignaturaLayout.setVerticalGroup(
-            panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCreacionAsignaturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(spinnerHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar)
-                    .addComponent(labelCodigo))
-                .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCreacionAsignaturaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(comboPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(textoNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelCreacionAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelCreacionAsignaturaLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelCreacionAsignatura.add(labelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 30, 55, -1));
 
         javax.swing.GroupLayout panelAsignaturasLayout = new javax.swing.GroupLayout(panelAsignaturas);
         panelAsignaturas.setLayout(panelAsignaturasLayout);
@@ -372,33 +345,34 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
             .addGroup(panelAsignaturasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelCreacionAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelAsignaturasLayout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panelCreacionAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panelAsignaturasLayout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31))))
         );
         panelAsignaturasLayout.setVerticalGroup(
             panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAsignaturasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelAsignaturasLayout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAsignaturasLayout.createSequentialGroup()
+                    .addGroup(panelAsignaturasLayout.createSequentialGroup()
                         .addComponent(btnNuevo)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
-                .addComponent(panelCreacionAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(38, 38, 38)))
+                .addComponent(panelCreacionAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -409,7 +383,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelArea, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
+                    .addComponent(PanelArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelAsignaturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -419,8 +393,8 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(PanelArea, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelAsignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(panelAsignaturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -431,9 +405,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -450,7 +422,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         labelCodigo.setEnabled(false);
         btnGuardar.setText("GUARDAR");
         cargarComboArea();
-        
+
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAreaActionPerformed
@@ -501,37 +473,38 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         enableComponents(panelCreacionAsignatura, false);
         limpiarCamposAsignatura();
-        botonEliminarAsignatura();        
+        botonEliminarAsignatura();
     }//GEN-LAST:event_btnEliminarActionPerformed
     private void botonGuardarArea() {
         Area area = obtenerArea();
         try {
             controlArea.registrar(area);
-            JOptionPane.showMessageDialog(PanelArea, "Area registrada exitosamente.", 
+            JOptionPane.showMessageDialog(PanelArea, "Area registrada exitosamente.",
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposArea();
             enableComponents(panelCreacionArea, false);
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), 
+            JOptionPane.showMessageDialog(PanelArea, ex.getMessage(),
                     "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), 
+            JOptionPane.showMessageDialog(PanelArea, ex.getMessage(),
                     "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
 
     }
-        private void botonGuardarAsignatura() {
-            Asignatura asignatura = obtenerAsignatura();
+
+    private void botonGuardarAsignatura() {
+        Asignatura asignatura = obtenerAsignatura();
         try {
             controlAsignatura.registrar(asignatura);
             JOptionPane.showMessageDialog(panelAsignaturas, "Asignatura registrada exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposAsignatura();
             enableComponents(panelCreacionAsignatura, false);
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(), 
+            JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(),
                     "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(), 
+            JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(),
                     "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -549,15 +522,16 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
                             "Informacion", JOptionPane.INFORMATION_MESSAGE);
                     cargarTablaArea();
                 } catch (NullPointerException ex) {
-                    JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), 
+                    JOptionPane.showMessageDialog(PanelArea, ex.getMessage(),
                             "Validacion", JOptionPane.QUESTION_MESSAGE);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), 
+                    JOptionPane.showMessageDialog(PanelArea, ex.getMessage(),
                             "Excepcion", JOptionPane.WARNING_MESSAGE);
                 }
             }
         }
     }
+
     private void botonEliminarAsignatura() {
         int codigo = seleccionTablaCodigoAsignatura();
 
@@ -570,18 +544,19 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
                             "Informacion", JOptionPane.INFORMATION_MESSAGE);
                     cargarTablaAsignaturas();
                 } catch (NullPointerException ex) {
-                    JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(), 
+                    JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(),
                             "Validacion", JOptionPane.QUESTION_MESSAGE);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(), 
+                    JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(),
                             "Excepcion", JOptionPane.WARNING_MESSAGE);
                 }
             }
         }
     }
+
     private void modificarArea() {
         try {
-            Area area = obtenerArea();
+            Area area = obtenerAreaActualizar();
             controlArea.actualizar(area);
             JOptionPane.showMessageDialog(PanelArea, "Area modificada exitosamente.",
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -594,9 +569,10 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(PanelArea, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
     }
-        private void modificarAsignatura() {
+
+    private void modificarAsignatura() {
         try {
-            Asignatura asignatura = obtenerAsignatura();
+            Asignatura asignatura = obtenerAsignaturaActualizar();
             controlAsignatura.actualizar(asignatura);
             JOptionPane.showMessageDialog(panelAsignaturas, "Asignatura modificada exitosamente.",
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -667,6 +643,17 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         return new Area(codigo, nombre);
     }
 
+    private Area obtenerAreaActualizar() {
+        int codigo = Integer.valueOf(labelCodigoArea.getText());
+        try {
+            Area area = controlArea.buscarPorCodigo(codigo);
+            area.setNombre(textoNombreArea.getText());
+            return area;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
     private Asignatura obtenerAsignatura() {
         int codigo = Integer.valueOf(labelCodigo.getText());
         String nombre = textoNombre.getText();
@@ -682,6 +669,29 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
 
         }
         return new Asignatura(codigo, nombre, iHoraria, nombreCompleto, porcentaje, area);
+    }
+
+    private Asignatura obtenerAsignaturaActualizar() {
+        int codigo = Integer.valueOf(labelCodigo.getText());
+        try {
+            Asignatura asignatura = controlAsignatura.buscarPorCodigo(codigo);
+            asignatura.setNombre(textoNombre.getText());
+            asignatura.setNombreCompleto(textoNombreCompleto.getText());
+            asignatura.setIHoraria((int) spinnerHoraria.getValue());
+            asignatura.setPorcentaje(comboPorcentaje.getSelectedIndex());
+            int itemArea = comboArea.getSelectedIndex() - 1;
+            Area area;
+            
+            try {
+                area = controlArea.buscarPorItem(itemArea);
+            } catch (Exception ex) {
+                area = null;
+            }
+            asignatura.setArea(area);
+            return asignatura;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private int seleccionTablaCodigoArea() {
@@ -730,7 +740,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         textoNombreCompleto.setText(asignatura.getNombreCompleto());
         spinnerHoraria.setValue(asignatura.getIHoraria());
         comboPorcentaje.setSelectedIndex(asignatura.getPorcentaje());
-        
+
         try {
             int indice = controlArea.buscarPorIndice(asignatura.getArea().getIdArea());
             comboArea.setSelectedIndex(indice);
