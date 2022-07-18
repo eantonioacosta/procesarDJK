@@ -377,12 +377,14 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         enableComponents(panelAsignaturas, false);
         enableComponents(panelGruposConsulta, false);
         enableComponents(panelGrupos, true);
+        limpiarCampos();
     }//GEN-LAST:event_botonCancelar2ActionPerformed
 
     private void botonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar1ActionPerformed
         enableComponents(panelAsignaturas, false);
         enableComponents(panelGruposConsulta, false);
         enableComponents(panelGrupos, true);
+        limpiarCampos();
     }//GEN-LAST:event_botonCancelar1ActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
@@ -398,11 +400,9 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 enableComponents(panelBotonesEliminar, false);
                 return true;
             } catch (NullPointerException ex) {
-                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                        "Validacion", JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                        "Excepcion", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
             }
         }
         grupoLocal = null;
@@ -431,10 +431,13 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
 
                 modelo.addRow(fila);
             }
-            tablaAsignatura.setModel(modelo);
-
+            if(listaAsignatura.isEmpty()){
+                JOptionPane.showMessageDialog(panelCentral, "No hay asignaturas disponibles para este grupo", "Validacion", JOptionPane.QUESTION_MESSAGE);
+                tablaAsignatura.setModel(new DefaultTableModel());
+            }else{
+                tablaAsignatura.setModel(modelo);
+            }
         } catch (NullPointerException ex) {
-
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
@@ -507,6 +510,12 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         columnModel.getColumn(1).setPreferredWidth(350);
         columnModel.getColumn(2).setPreferredWidth(300);
 
+    }
+    private void limpiarCampos(){
+        txtGrado.setText("");
+        txtNAsignaturas.setText("");
+        tablaAsignatura.setModel(new DefaultTableModel());
+        tablaConsulta.setModel(new DefaultTableModel());
     }
 
     public void enableComponents(Container container, boolean enable) {
