@@ -89,7 +89,6 @@ public class ViewLogin extends javax.swing.JFrame {
         });
 
         TextPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TextPassword.setText("000");
         TextPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TextPasswordKeyPressed(evt);

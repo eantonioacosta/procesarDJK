@@ -118,6 +118,11 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         botonAjustar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
         botonAjustar.setText("Ajustar");
         botonAjustar.setPreferredSize(new java.awt.Dimension(100, 25));
+        botonAjustar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAjustarActionPerformed(evt);
+            }
+        });
         panelBotones.add(botonAjustar, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 0, 130, -1));
 
         botonConsulta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -266,6 +271,10 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        txtGrado.setBackground(new java.awt.Color(255, 255, 255));
         txtGrado.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         txtGrado.setForeground(new java.awt.Color(51, 0, 204));
         txtGrado.setText("*");
@@ -293,7 +302,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addGap(31, 31, 31)
                 .addComponent(txtNAsignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,14 +323,11 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelCentralLayout.createSequentialGroup()
-                        .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelAsignaturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelGruposConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -335,24 +341,24 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                     .addComponent(panelGruposConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(panelAsignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCentralLayout.createSequentialGroup()
+                .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCentralLayout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelAsignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 1204, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
         );
 
         pack();
@@ -390,6 +396,17 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         botonGuardar();
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonAjustarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAjustarActionPerformed
+        if (botonConsultar()) {
+            //botonAgregar();
+            enableComponents(panelBotonesEliminar, true);
+            enableComponents(panelAsignaturas, false);
+            enableComponents(panelGrupos, false);
+            txtGrado.setText(grupoLocal.toString());
+            txtNAsignaturas.setText("" + grupoLocal.getCargaAcademicaList().size());
+        }
+    }//GEN-LAST:event_botonAjustarActionPerformed
     private boolean botonConsultar() {
         int codigo = seleccionTablaGrupoCodigo();
         if (codigo != -1) {
@@ -431,10 +448,10 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
 
                 modelo.addRow(fila);
             }
-            if(listaAsignatura.isEmpty()){
+            if (listaAsignatura.isEmpty()) {
                 JOptionPane.showMessageDialog(panelCentral, "No hay asignaturas disponibles para este grupo", "Validacion", JOptionPane.QUESTION_MESSAGE);
                 tablaAsignatura.setModel(new DefaultTableModel());
-            }else{
+            } else {
                 tablaAsignatura.setModel(modelo);
             }
         } catch (NullPointerException ex) {
@@ -511,7 +528,8 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         columnModel.getColumn(2).setPreferredWidth(300);
 
     }
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         txtGrado.setText("");
         txtNAsignaturas.setText("");
         tablaAsignatura.setModel(new DefaultTableModel());

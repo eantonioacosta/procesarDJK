@@ -1,3 +1,4 @@
+djk\procesardkj\view\ViewCargaAcademica$6.class
 djk\procesardkj\view\ViewDocente$3.class
 djk\procesardkj\view\ViewGrupos.class
 djk\procesardkj\domain\Padre_.class
@@ -21,6 +22,7 @@ djk\procesardkj\view\ViewAdministrador$5.class
 djk\procesardkj\view\ViewAsignaturas$5.class
 djk\procesardkj\domain\AnioLectivo.class
 djk\procesardkj\domain\Usuario_.class
+djk\procesardkj\view\ViewCargaAcademica$3.class
 djk\procesardkj\domain\Grupo_.class
 djk\procesardkj\view\ViewAniosLectivos$1.class
 djk\procesardkj\view\ViewAsignaturas$2.class
@@ -31,6 +33,7 @@ djk\procesardkj\controller\ControllerAnioLectivo.class
 djk\procesardkj\view\ViewDocente.class
 djk\procesardkj\datos\GrupoJpaController.class
 djk\procesardkj\view\ViewAniosLectivos$4.class
+djk\procesardkj\view\ViewCargaAcademica$4.class
 djk\procesardkj\view\ViewDocente$11.class
 djk\procesardkj\domain\Area_.class
 djk\procesardkj\domain\Grupo.class
@@ -42,6 +45,7 @@ djk\procesardkj\domain\Nota.class
 djk\procesardkj\view\ViewAdministrador$8.class
 djk\procesardkj\view\ViewGrupos$6.class
 djk\procesardkj\controller\ControllerAreasAsignaturas.class
+djk\procesardkj\view\ViewCargaAcademica$5.class
 djk\procesardkj\domain\Matricula.class
 djk\procesardkj\view\ViewUsuarios$5.class
 djk\procesardkj\view\ViewDocente$4.class
@@ -79,6 +83,7 @@ djk\procesardkj\datos\ObservacionJpaController.class
 djk\procesardkj\domain\Nota_.class
 djk\procesardkj\view\ViewDocente$12.class
 djk\procesardkj\view\ViewAniosLectivos$2.class
+djk\procesardkj\view\ViewCargaAcademica$2.class
 djk\procesardkj\view\ViewDocente$2.class
 djk\procesardkj\view\ViewAdministrador$3.class
 djk\procesardkj\view\ViewGrupos$4.class
