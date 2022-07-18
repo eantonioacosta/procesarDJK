@@ -48,7 +48,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             tablaGrupos.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = tablaGrupos.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(30);
-            columnModel.getColumn(1).setPreferredWidth(550);
+            columnModel.getColumn(1).setPreferredWidth(530);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "Excepcion", JOptionPane.WARNING_MESSAGE);
@@ -163,6 +163,11 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         panelBotonesEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
         panelBotonesEliminar.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 114, -1));
 
         botonCancelar1.setText("Cancelar");
@@ -221,12 +226,10 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             .addGroup(panelAsignaturasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAsignaturasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3)
                     .addGroup(panelAsignaturasLayout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
                         .addComponent(botonCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -399,7 +402,6 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
 
     private void botonAjustarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAjustarActionPerformed
         if (botonConsultar()) {
-            //botonAgregar();
             enableComponents(panelBotonesEliminar, true);
             enableComponents(panelAsignaturas, false);
             enableComponents(panelGrupos, false);
@@ -407,6 +409,26 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             txtNAsignaturas.setText("" + grupoLocal.getCargaAcademicaList().size());
         }
     }//GEN-LAST:event_botonAjustarActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        botonEliminar();
+    }//GEN-LAST:event_botonEliminarActionPerformed
+    private void botonEliminar() {
+        int codigo = seleccionTablaConsultaCodigo();
+        if (codigo != -1) {
+            try {
+                controlCarga.eliminar(codigo);
+                JOptionPane.showMessageDialog(panelCentral, "Asignatura eliminada exitosamente.",
+                        "Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
+                botonAjustarActionPerformed(null);
+            } catch (NullPointerException ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
     private boolean botonConsultar() {
         int codigo = seleccionTablaGrupoCodigo();
         if (codigo != -1) {
@@ -453,6 +475,11 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 tablaAsignatura.setModel(new DefaultTableModel());
             } else {
                 tablaAsignatura.setModel(modelo);
+                tablaAsignatura.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                TableColumnModel columnModel = tablaAsignatura.getColumnModel();
+                columnModel.getColumn(0).setPreferredWidth(30);
+                columnModel.getColumn(1).setPreferredWidth(264);
+                columnModel.getColumn(2).setPreferredWidth(250);
             }
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
@@ -493,7 +520,6 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
 
     private int seleccionTablaAsignaturaCodigo() {
         int indice = tablaAsignatura.getSelectedRow();
-        System.out.println(indice + "****************");
         if (indice == -1) {
             JOptionPane.showMessageDialog(panelCentral, "Seleccione una asignatura! ", "Validacion", JOptionPane.QUESTION_MESSAGE);
             return -1;
@@ -503,12 +529,23 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         }
     }
 
+    private int seleccionTablaConsultaCodigo() {
+        int indice = tablaConsulta.getSelectedRow();
+        if (indice == -1) {
+            JOptionPane.showMessageDialog(panelCentral, "Seleccione una asignatura! ", "Validacion", JOptionPane.QUESTION_MESSAGE);
+            return -1;
+        } else {
+            String codigo = String.valueOf(tablaConsulta.getValueAt(indice, 3));
+            return Integer.valueOf(codigo);
+        }
+    }
+
     private void tablaAsignaturasRegistradas() {
         if (grupoLocal.getCargaAcademicaList().size() <= 0) {
             JOptionPane.showMessageDialog(panelCentral, "No tiene asignaturas registradas! ", "Validacion", JOptionPane.QUESTION_MESSAGE);
         }
 
-        String[] columnas = {"#", "NOMBRE", "AREA"};
+        String[] columnas = {"#", "NOMBRE", "AREA", "REF"};
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
 
@@ -517,16 +554,16 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             fila[0] = "" + cargar.getAsignatura().getIdAsignatura();
             fila[1] = cargar.getAsignatura().getNombre();
             fila[2] = cargar.getAsignatura().getArea().getNombre();
-
+            fila[3] = "" + cargar.getIdCarga();
             modelo.addRow(fila);
         }
         tablaConsulta.setModel(modelo);
         tablaConsulta.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         TableColumnModel columnModel = tablaConsulta.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(30);
-        columnModel.getColumn(1).setPreferredWidth(350);
-        columnModel.getColumn(2).setPreferredWidth(300);
-
+        columnModel.getColumn(1).setPreferredWidth(264);
+        columnModel.getColumn(2).setPreferredWidth(250);
+        columnModel.getColumn(3).setPreferredWidth(30);
     }
 
     private void limpiarCampos() {
