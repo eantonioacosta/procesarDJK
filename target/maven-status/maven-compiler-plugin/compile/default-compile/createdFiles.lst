@@ -3,7 +3,9 @@ djk\procesardkj\view\ViewGrupos.class
 djk\procesardkj\domain\Padre_.class
 djk\procesardkj\datos\exceptions\IllegalOrphanException.class
 djk\procesardkj\domain\Usuario.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$3.class
 djk\procesardkj\view\ViewAdministrador$2.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$6.class
 djk\procesardkj\view\ViewLogin$2.class
 djk\procesardkj\controller\ControllerDocente.class
 djk\procesardkj\datos\AnioLectivoJpaController.class
@@ -33,6 +35,7 @@ djk\procesardkj\view\ViewDocente$11.class
 djk\procesardkj\domain\Area_.class
 djk\procesardkj\domain\Grupo.class
 djk\procesardkj\datos\EstudianteJpaController.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$5.class
 djk\procesardkj\view\ViewAsignaturas$6.class
 djk\procesardkj\domain\Area.class
 djk\procesardkj\domain\Nota.class
@@ -45,6 +48,7 @@ djk\procesardkj\view\ViewDocente$4.class
 djk\procesardkj\domain\Padre.class
 djk\procesardkj\domain\AnioLectivo_.class
 djk\procesardkj\view\ViewAniosLectivos$3.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$4.class
 djk\procesardkj\view\ViewAdministrador$1.class
 djk\procesardkj\controller\ControllerUsuario.class
 djk\procesardkj\domain\Observacion_.class
@@ -67,6 +71,7 @@ djk\procesardkj\view\ViewAdministrador$6.class
 djk\procesardkj\controller\Render.class
 djk\procesardkj\domain\CargaAcademica.class
 djk\procesardkj\view\ViewUsuarios$4.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos.class
 djk\procesardkj\datos\exceptions\NonexistentEntityException.class
 djk\procesardkj\view\ViewAsignaturas$1.class
 djk\procesardkj\view\ViewLogin$6.class
@@ -78,15 +83,20 @@ djk\procesardkj\view\ViewDocente$2.class
 djk\procesardkj\view\ViewAdministrador$3.class
 djk\procesardkj\view\ViewGrupos$4.class
 djk\procesardkj\domain\Docente.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$2.class
 djk\procesardkj\view\ViewLogin$3.class
 djk\procesardkj\controller\ControllerGrupo$1.class
+djk\procesardkj\view\ViewCargaAcademica.class
 djk\procesardkj\view\ViewDocente$5.class
 djk\procesardkj\view\ViewLogin.class
 djk\procesardkj\view\ViewAsignaturas.class
 djk\procesardkj\controller\ControllerAsignaturas.class
 djk\procesardkj\view\ViewAdministrador$4.class
 djk\procesardkj\domain\Docente_.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$8.class
 djk\procesardkj\domain\Asignatura_.class
+djk\procesardkj\view\ViewCargaAcademica$1.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$1.class
 djk\procesardkj\domain\Observacion.class
 djk\procesardkj\view\ViewDocente$8.class
 djk\procesardkj\view\ViewAsignaturas$9.class
@@ -98,6 +108,7 @@ djk\procesardkj\view\ViewUsuarios$2.class
 djk\procesardkj\view\ViewDocente$1.class
 djk\procesardkj\Principal.class
 djk\procesardkj\datos\AreaJpaController.class
+djk\procesardkj\view\ViewCargaAcademicaGrupos$7.class
 djk\procesardkj\view\ViewAsignaturas$3.class
 djk\procesardkj\controller\ControllerCargaAcademica.class
 djk\procesardkj\view\ViewAsignaturas$10.class

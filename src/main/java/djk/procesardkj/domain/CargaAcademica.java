@@ -62,6 +62,15 @@ public class CargaAcademica implements Serializable {
         this.idCarga = idCarga;
     }
 
+    public CargaAcademica(Asignatura asignatura, Grupo grupo) {
+        this.asignatura = asignatura;
+        this.grupo = grupo;
+    }
+    public CargaAcademica(Asignatura asignatura, Grupo grupo, AnioLectivo anioLectivo) {
+        this.asignatura = asignatura;
+        this.grupo = grupo;
+        this.anioLectivo = anioLectivo;
+    }
     public Integer getIdCarga() {
         return idCarga;
     }
@@ -134,5 +143,6 @@ public class CargaAcademica implements Serializable {
     public String toString() {
         return "djk.procesardkj.domain.CargaAcademica[ idCarga=" + idCarga + " ]";
     }
+
     
 }

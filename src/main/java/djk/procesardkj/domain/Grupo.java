@@ -165,7 +165,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "djk.procesardkj.domain.Grupo[ idGrupo=" + idGrupo + " ]";
+        return getNombreTexto() + " / jornada: " + getJornadaTexto() + " / Grupo: " + indiceGrupo;
     }
     
         public String getNombreTexto(){

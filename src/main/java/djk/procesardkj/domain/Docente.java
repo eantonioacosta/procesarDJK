@@ -266,7 +266,7 @@ public class Docente implements Serializable {
     }
     
     public String getNombreCompleto() {
-        return nombres + "" + apellidos;
+        return nombres + " " + apellidos;
     }
 
     public String getTipoSangreTexto() {

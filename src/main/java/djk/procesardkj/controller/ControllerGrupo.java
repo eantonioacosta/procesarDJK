@@ -2,6 +2,9 @@ package djk.procesardkj.controller;
 
 
 import djk.procesardkj.datos.GrupoJpaController;
+import djk.procesardkj.domain.AnioLectivo;
+import djk.procesardkj.domain.Asignatura;
+import djk.procesardkj.domain.CargaAcademica;
 import djk.procesardkj.domain.Grupo;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +47,7 @@ public class ControllerGrupo {
         return dao.findGrupoEntities();
     }
 
-    public List<Grupo> verGrupos(int idAnioLectivo) throws Exception {
+    public List<Grupo> verGrupos(int idAnioLectivo) throws Exception {//mejorar consulta 
         List<Grupo> listaGrupo = new ArrayList<>();
         for (Grupo grupo : dao.findGrupoEntities()) {
             if (grupo.getAnioLectivo().getIdAnioLectivo()== idAnioLectivo) {
@@ -93,9 +96,23 @@ public class ControllerGrupo {
         }
         return modelo;
     }
+    public DefaultTableModel getTablaCarga(AnioLectivo anio) throws Exception {
+        String[] columnas = {"ID", "NOMBRE"};
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(columnas);
+        
+        List<Grupo> listaGrupo = verGrupos(anio.getIdAnioLectivo());
+        
+        String[] fila = new String[columnas.length];
+        for (Grupo grupo : listaGrupo) {
+            fila[0] = "" + grupo.getIdGrupo();
+            fila[1] = grupo.toString();
+            modelo.addRow(fila);
+        }
+        return modelo;
+    }
 
     private boolean[] editable = {false, false, false, false, true, false};
-
     public void visualizar(JTable tabla) {
 
         tabla.setDefaultRenderer(Object.class, new Render());

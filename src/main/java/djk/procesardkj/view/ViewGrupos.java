@@ -101,6 +101,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         setTitle("Creacion/Modificacion de grupos");
         setMinimumSize(new java.awt.Dimension(730, 590));
         setPreferredSize(new java.awt.Dimension(730, 590));
+        setVisible(false);
 
         panelCentral.setBackground(new java.awt.Color(255, 255, 255));
         panelCentral.setMinimumSize(new java.awt.Dimension(730, 590));
@@ -354,16 +355,13 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         Grupo grupo = obtenerCampos();
         try {
             controlGrupo.registrar(grupo);
-            JOptionPane.showMessageDialog(panelCentral, "Grupo registrado exitosamente.",
-                    "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, "Grupo registrado exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
             enableComponents(panelCreacion, false);
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                    "Validacion", JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),"Excepcion", JOptionPane.WARNING_MESSAGE);
         }
 
     }
