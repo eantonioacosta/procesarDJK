@@ -563,12 +563,11 @@
         <Component class="javax.swing.JComboBox" name="comboFilter">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Filtrar por:"/>
-                <StringItem index="1" value="ACTIVOS"/>
-                <StringItem index="2" value="INACTIVOS"/>
-                <StringItem index="3" value="RETIRADOS"/>
-                <StringItem index="4" value="TODOS"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Todos"/>
+                <StringItem index="1" value="Activo"/>
+                <StringItem index="2" value="Suspendido"/>
+                <StringItem index="3" value="Retirado"/>
               </StringArray>
             </Property>
           </Properties>

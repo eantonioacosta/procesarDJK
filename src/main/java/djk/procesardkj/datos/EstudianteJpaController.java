@@ -20,6 +20,7 @@ import djk.procesardkj.domain.Matricula;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -30,6 +31,7 @@ public class EstudianteJpaController implements Serializable {
     public EstudianteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+
     public EstudianteJpaController() {
         this.emf = Persistence.createEntityManagerFactory("djk_ProcesarDKJ_jar_1.0PU");
     }
@@ -297,5 +299,5 @@ public class EstudianteJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -69,14 +69,20 @@ public class ControllerDocente {
     public Docente buscarPorCodigo(int codigo) throws Exception{
         return dao.findDocente(codigo);
     }
+    public List<Docente> buscarPorEstado(int estado){
+        if(estado == 0){
+            return dao.findDocenteEntities();
+        }
+        return dao.findEstudianteByEstado(estado);
+    }
 
-    public DefaultTableModel getTabla() throws Exception{//Validar si la tabla esta vacia
+    public DefaultTableModel getTabla(int numero) throws Exception{//Validar si la tabla esta vacia
         String[] columnas = {"#", "IDENTFICACION", "NOMBRE COMPLETO", "ESTADO", "FECHA NTO", "T.S", "DIRECCION", "TELEFONO", "CORREO", "CIUDAD", "TITULO"};
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
 
         String[] fila = new String[columnas.length];
-        for (Docente docente : dao.findDocenteEntities()) {
+        for (Docente docente : buscarPorEstado(numero)) {
             fila[0] = "" + docente.getIdDocente();
             fila[1] = "" + docente.getUsuario().getCodigo();
             fila[2] = docente.getNombreCompleto();

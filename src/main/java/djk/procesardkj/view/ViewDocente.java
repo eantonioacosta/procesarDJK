@@ -28,13 +28,13 @@ public class ViewDocente extends javax.swing.JInternalFrame {
     private void iniciarComponentes() {
         enableComponents(panelCreacion, false);
         control = new ControllerDocente();
-        cargarTabla();
+        cargarTabla(0);
 
     }
 
-    private void cargarTabla() {
+    private void cargarTabla(int numero) {
         try {
-            table.setModel(control.getTabla());
+            table.setModel(control.getTabla(numero));
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = table.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(30);
@@ -49,8 +49,10 @@ public class ViewDocente extends javax.swing.JInternalFrame {
             columnModel.getColumn(9).setPreferredWidth(150);
             columnModel.getColumn(10).setPreferredWidth(150);
 
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -296,7 +298,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         });
         panelCentral.add(textoFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 210, -1));
 
-        comboFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar por:", "ACTIVOS", "INACTIVOS", "RETIRADOS", "TODOS" }));
+        comboFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Activo", "Suspendido", "Retirado" }));
         comboFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboFilterActionPerformed(evt);
@@ -355,7 +357,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         } else {
             botonGuardar();
         }
-        cargarTabla();
+        cargarTabla(0);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -385,15 +387,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
 
     private void comboFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFilterActionPerformed
         int opc = comboFilter.getSelectedIndex();
-        switch (opc) {
-            case 1:
-                break;
-            case 2:
-            case 3:
-            case 4:
-
-                break;
-        }
+        cargarTabla(opc);
     }//GEN-LAST:event_comboFilterActionPerformed
     private void botonEliminar() {
         int codigo = seleccionTablaCodigo();
@@ -405,7 +399,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                     control.eliminar(codigo);
                     JOptionPane.showMessageDialog(panelCentral, "Docente eliminado exitosamente.",
                             "Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
-                    cargarTabla();
+                    cargarTabla(0);
                 } catch (NullPointerException ex) {
                     JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
                 } catch (Exception ex) {

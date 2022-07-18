@@ -20,6 +20,7 @@ import djk.procesardkj.domain.Docente;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -275,6 +276,17 @@ public class DocenteJpaController implements Serializable {
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+    
+        public List<Docente> findEstudianteByEstado(int estado) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Docente> consulta = em.createNamedQuery("Docente.findByEstado", Docente.class);
+            consulta.setParameter("estado", estado);
+            return consulta.getResultList();
         } finally {
             em.close();
         }
