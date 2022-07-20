@@ -361,7 +361,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),"Excepcion", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -371,14 +371,17 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         int nombre = listaGrado.getSelectedIndex();
         int indiceGrupo = (int) spinner.getValue();
         int jornada = comboJornada.getSelectedIndex();
-        int indiceDocente = ComboDirector.getSelectedIndex() - 1;
+        int indiceDocente = ComboDirector.getSelectedIndex();
 
-        Docente docente = null;
-        try {
-            docente = controlDocente.verDocentesActivo().get(indiceDocente);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
-                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+        Docente docente;
+        if (indiceDocente == -1 || indiceDocente == 0) {
+            docente = null;
+        } else {
+            try {
+                docente = controlDocente.verDocentesActivo().get(indiceDocente - 1);
+            } catch (Exception ex) {
+                docente = null;
+            }
         }
         return new Grupo(idGrupo, nombre, jornada, indiceGrupo, anioLectivo, docente);
 
@@ -392,18 +395,24 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
             grupo.setIndiceGrupo((int) spinner.getValue());
             grupo.setJornada(comboJornada.getSelectedIndex());
 
-            int indiceDocente = ComboDirector.getSelectedIndex() - 1;
-            Docente docente = null;
-            try {
-                docente = controlDocente.verDocentesActivo().get(indiceDocente);
-            } catch (Exception ex) {
-                
+            int indiceDocente = ComboDirector.getSelectedIndex();
+            Docente docente;
+
+            if (indiceDocente == -1 || indiceDocente == 0) {
+                docente = null;
+            } else {
+                try {
+                    docente = controlDocente.verDocentesActivo().get(indiceDocente - 1);
+                } catch (Exception ex) {
+                    docente = null;
+                }
             }
+
             grupo.setDocente(docente);
             return grupo;
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),"Excepcion", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
         return null;
     }

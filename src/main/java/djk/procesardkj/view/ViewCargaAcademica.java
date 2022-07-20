@@ -64,6 +64,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         botonAgregar = new javax.swing.JButton();
         botonAjustar = new javax.swing.JButton();
         botonConsulta = new javax.swing.JButton();
+        botonCancelar3 = new javax.swing.JButton();
         panelGruposConsulta = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaConsulta = new javax.swing.JTable();
@@ -98,7 +99,6 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(tablaGrupos);
 
-        panelBotones.setBackground(null);
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -110,7 +110,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 botonAgregarActionPerformed(evt);
             }
         });
-        panelBotones.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 130, -1));
+        panelBotones.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 130, -1));
 
         botonAjustar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botonAjustar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
@@ -132,6 +132,16 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             }
         });
         panelBotones.add(botonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        botonCancelar3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonCancelar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
+        botonCancelar3.setText("Cancelar");
+        botonCancelar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelar3ActionPerformed(evt);
+            }
+        });
+        panelBotones.add(botonCancelar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 130, -1));
 
         javax.swing.GroupLayout panelGruposLayout = new javax.swing.GroupLayout(panelGrupos);
         panelGrupos.setLayout(panelGruposLayout);
@@ -158,7 +168,6 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(tablaConsulta);
 
-        panelBotonesEliminar.setBackground(null);
         panelBotonesEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonEliminar.setText("Eliminar");
@@ -380,16 +389,11 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar2ActionPerformed
-        enableComponents(panelAsignaturas, false);
-        enableComponents(panelGruposConsulta, false);
-        enableComponents(panelGrupos, true);
+
         limpiarCampos();
     }//GEN-LAST:event_botonCancelar2ActionPerformed
 
     private void botonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar1ActionPerformed
-        enableComponents(panelAsignaturas, false);
-        enableComponents(panelGruposConsulta, false);
-        enableComponents(panelGrupos, true);
         limpiarCampos();
     }//GEN-LAST:event_botonCancelar1ActionPerformed
 
@@ -408,6 +412,10 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         botonEliminar();
     }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonCancelar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar3ActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_botonCancelar3ActionPerformed
     private void botonEliminar() {
         int codigo = seleccionTablaConsultaCodigo();
         if (codigo != -1) {
@@ -567,6 +575,9 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         txtNAsignaturas.setText("");
         tablaAsignatura.setModel(new DefaultTableModel());
         tablaConsulta.setModel(new DefaultTableModel());
+        enableComponents(panelAsignaturas, false);
+        enableComponents(panelGruposConsulta, false);
+        enableComponents(panelGrupos, true);
     }
 
     public void enableComponents(Container container, boolean enable) {
@@ -583,6 +594,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
     private javax.swing.JButton botonAjustar;
     private javax.swing.JButton botonCancelar1;
     private javax.swing.JButton botonCancelar2;
+    private javax.swing.JButton botonCancelar3;
     private javax.swing.JButton botonConsulta;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonGuardar;

@@ -2,14 +2,14 @@ package djk.procesardkj.view;
 
 import djk.procesardkj.controller.ControllerAsignaturas;
 import djk.procesardkj.controller.ControllerCargaAcademica;
+import djk.procesardkj.controller.ControllerDocente;
 import djk.procesardkj.controller.ControllerGrupo;
 import djk.procesardkj.domain.AnioLectivo;
-import djk.procesardkj.domain.Asignatura;
 import djk.procesardkj.domain.CargaAcademica;
+import djk.procesardkj.domain.Docente;
 import djk.procesardkj.domain.Grupo;
 import java.awt.Component;
 import java.awt.Container;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -19,9 +19,10 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
 
     ControllerGrupo controlGrupos;
     ControllerCargaAcademica controlCarga;
-    ControllerAsignaturas controlAsignatura;
+    ControllerDocente controlDocente;
     AnioLectivo anioLectivo;
     Grupo grupoLocal;
+    CargaAcademica cargaLocal;
 
     public ViewCargaAcademicaDocente() {
         initComponents();
@@ -31,12 +32,15 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
     private void inicarComponentes() {
         controlGrupos = new ControllerGrupo();
         controlCarga = new ControllerCargaAcademica();
-        controlAsignatura = new ControllerAsignaturas();
+        controlDocente = new ControllerDocente();
+
         anioLectivo = ViewAdministrador.anioLectivo;
         grupoLocal = null;
+        cargaLocal = null;
         cargarTablaGrupos();
-        enableComponents(panelAsignaturas, false);
+        enableComponents(panelDocente, false);
         enableComponents(panelGruposConsulta, false);
+        cargarComboDocente();
     }
 
     private void cargarTablaGrupos() {
@@ -61,18 +65,22 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaGrupos = new javax.swing.JTable();
         panelBotones = new javax.swing.JPanel();
-        botonAgregar = new javax.swing.JButton();
         botonAjustar = new javax.swing.JButton();
         botonConsulta = new javax.swing.JButton();
+        botonCancelar3 = new javax.swing.JButton();
         panelGruposConsulta = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaConsulta = new javax.swing.JTable();
-        panelBotonesEliminar = new javax.swing.JPanel();
+        panelBotonesRelacion = new javax.swing.JPanel();
         botonEliminar = new javax.swing.JButton();
         botonCancelar1 = new javax.swing.JButton();
-        panelAsignaturas = new javax.swing.JPanel();
-        botonGuardar = new javax.swing.JButton();
+        botonAgregar = new javax.swing.JButton();
+        panelDocente = new javax.swing.JPanel();
+        botonRegistrar = new javax.swing.JButton();
         botonCancelar2 = new javax.swing.JButton();
+        comboDocente = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        labelAsignatura = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -83,7 +91,7 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Creacion y modificacion - Relacion grupos asignaturas");
+        setTitle("Creacion y modificacion - Relacion Asignaturas Docente");
         setPreferredSize(new java.awt.Dimension(1220, 640));
         setVisible(false);
 
@@ -98,17 +106,6 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         panelBotones.setBackground(new java.awt.Color(255, 255, 255));
         panelBotones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        botonAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
-        botonAgregar.setText("Agregar");
-        botonAgregar.setPreferredSize(new java.awt.Dimension(100, 25));
-        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarActionPerformed(evt);
-            }
-        });
-        panelBotones.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 130, -1));
 
         botonAjustar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botonAjustar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
@@ -129,7 +126,17 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
                 botonConsulta(evt);
             }
         });
-        panelBotones.add(botonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelBotones.add(botonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, -1));
+
+        botonCancelar3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonCancelar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
+        botonCancelar3.setText("Cancelar");
+        botonCancelar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelar3ActionPerformed(evt);
+            }
+        });
+        panelBotones.add(botonCancelar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 130, -1));
 
         javax.swing.GroupLayout panelGruposLayout = new javax.swing.GroupLayout(panelGrupos);
         panelGrupos.setLayout(panelGruposLayout);
@@ -156,25 +163,36 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(tablaConsulta);
 
-        panelBotonesEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        panelBotonesEliminar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelBotonesEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBotonesRelacion.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotonesRelacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelBotonesRelacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
             }
         });
-        panelBotonesEliminar.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 114, -1));
+        panelBotonesRelacion.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 120, -1));
 
+        botonCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         botonCancelar1.setText("Cancelar");
         botonCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelar1ActionPerformed(evt);
             }
         });
-        panelBotonesEliminar.add(botonCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 114, -1));
+        panelBotonesRelacion.add(botonCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 120, -1));
+
+        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
+        botonAgregar.setText("Actualizar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
+        panelBotonesRelacion.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 120, -1));
 
         javax.swing.GroupLayout panelGruposConsultaLayout = new javax.swing.GroupLayout(panelGruposConsulta);
         panelGruposConsulta.setLayout(panelGruposConsultaLayout);
@@ -183,31 +201,33 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
             .addGroup(panelGruposConsultaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelGruposConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(panelGruposConsultaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(panelBotonesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                    .addComponent(panelBotonesRelacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelGruposConsultaLayout.setVerticalGroup(
             panelGruposConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGruposConsultaLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelBotonesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBotonesRelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        panelAsignaturas.setBackground(new java.awt.Color(255, 255, 255));
-        panelAsignaturas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Asignaturas disponibles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        panelDocente.setBackground(new java.awt.Color(255, 255, 255));
+        panelDocente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Docentes disponibles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        botonGuardar.setText("Guardar");
-        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+        botonRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
+        botonRegistrar.setText("Registrar");
+        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGuardarActionPerformed(evt);
+                botonRegistrarActionPerformed(evt);
             }
         });
 
+        botonCancelar2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonCancelar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
         botonCancelar2.setText("Cancelar");
         botonCancelar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,25 +235,44 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout panelAsignaturasLayout = new javax.swing.GroupLayout(panelAsignaturas);
-        panelAsignaturas.setLayout(panelAsignaturasLayout);
-        panelAsignaturasLayout.setHorizontalGroup(
-            panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAsignaturasLayout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
-                .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(botonCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+        comboDocente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        comboDocente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:" }));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Asignatura:");
+
+        javax.swing.GroupLayout panelDocenteLayout = new javax.swing.GroupLayout(panelDocente);
+        panelDocente.setLayout(panelDocenteLayout);
+        panelDocenteLayout.setHorizontalGroup(
+            panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDocenteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelDocenteLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(31, 31, 31)
+                        .addComponent(labelAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(botonCancelar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        panelAsignaturasLayout.setVerticalGroup(
-            panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAsignaturasLayout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addGroup(panelAsignaturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCancelar2)
-                    .addComponent(botonGuardar))
-                .addContainerGap(17, Short.MAX_VALUE))
+        panelDocenteLayout.setVerticalGroup(
+            panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDocenteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonRegistrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelAsignatura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonCancelar2)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -259,11 +298,11 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         txtGrado.setBackground(new java.awt.Color(255, 255, 255));
@@ -321,7 +360,7 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelAsignaturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDocente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelGruposConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
@@ -337,9 +376,11 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
                     .addGroup(panelCentralLayout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelAsignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(83, Short.MAX_VALUE))
+                    .addGroup(panelCentralLayout.createSequentialGroup()
+                        .addComponent(panelDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -362,37 +403,25 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         botonConsultar();
     }//GEN-LAST:event_botonConsulta
 
-    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-        if (botonConsultar()) {
-            
-            enableComponents(panelAsignaturas, true);
-            enableComponents(panelGrupos, false);
-        }
-
-    }//GEN-LAST:event_botonAgregarActionPerformed
-
     private void botonCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar2ActionPerformed
-        enableComponents(panelAsignaturas, false);
-        enableComponents(panelGruposConsulta, false);
-        enableComponents(panelGrupos, true);
-        limpiarCampos();
+        limpiarPanelDocente();
     }//GEN-LAST:event_botonCancelar2ActionPerformed
 
     private void botonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar1ActionPerformed
-        enableComponents(panelAsignaturas, false);
+        enableComponents(panelDocente, false);
         enableComponents(panelGruposConsulta, false);
         enableComponents(panelGrupos, true);
         limpiarCampos();
     }//GEN-LAST:event_botonCancelar1ActionPerformed
 
-    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        
-    }//GEN-LAST:event_botonGuardarActionPerformed
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+        botonRegistrar();
+    }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void botonAjustarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAjustarActionPerformed
         if (botonConsultar()) {
-            enableComponents(panelBotonesEliminar, true);
-            enableComponents(panelAsignaturas, false);
+            enableComponents(panelBotonesRelacion, true);
+            enableComponents(panelDocente, false);
             enableComponents(panelGrupos, false);
         }
     }//GEN-LAST:event_botonAjustarActionPerformed
@@ -400,13 +429,76 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         botonEliminar();
     }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonCancelar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelar3ActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_botonCancelar3ActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        botonAgregarDocente();
+    }//GEN-LAST:event_botonAgregarActionPerformed
+    private void botonAgregarDocente() {
+        int codigo = seleccionTablaConsultaCodigo();
+        if (codigo != -1) {
+            try {
+                cargaLocal = controlCarga.buscarPorCodigo(codigo);
+                //
+                enableComponents(panelDocente, true);
+                enableComponents(panelGruposConsulta, false);
+                labelAsignatura.setText(cargaLocal.getAsignatura().getNombreCompleto());
+
+            } catch (NullPointerException ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
+    private void botonRegistrar() {
+        int indice = comboDocente.getSelectedIndex();
+        if (indice == -1 || indice == 0) {
+            JOptionPane.showMessageDialog(panelCentral, "Seleccionar un docente", "Validacion", JOptionPane.QUESTION_MESSAGE);
+        } else {
+            try {
+                Docente docente = controlDocente.verDocentesActivo().get(indice - 1);
+                cargaLocal.setDocente(docente);
+                controlCarga.actualizar(cargaLocal);
+                JOptionPane.showMessageDialog(panelCentral, "Docente registrado exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                limpiarPanelDocente();
+                botonAjustarActionPerformed(null);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
+    private void cargarComboDocente() {
+        try {
+            controlDocente.verDocentesActivo().forEach((docente) -> {
+                comboDocente.addItem(docente.getNombreCompleto());
+            });
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
+                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
     private void botonEliminar() {
         int codigo = seleccionTablaConsultaCodigo();
         if (codigo != -1) {
             try {
-                controlCarga.eliminar(codigo);
-                JOptionPane.showMessageDialog(panelCentral, "Asignatura eliminada exitosamente.","Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
-                botonAjustarActionPerformed(null);
+                cargaLocal = controlCarga.buscarPorCodigo(codigo);
+                //
+                if (cargaLocal.getDocente() == null) {
+                    JOptionPane.showMessageDialog(panelCentral, "No tiene docente", "Validacion", JOptionPane.QUESTION_MESSAGE);
+                } else {
+                    cargaLocal.setDocente(null);
+                    controlCarga.actualizar(cargaLocal);
+                    JOptionPane.showMessageDialog(panelCentral, "Docente eliminado exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
+                    botonAjustarActionPerformed(null);
+                }
             } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
             } catch (Exception ex) {
@@ -422,7 +514,7 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
                 grupoLocal = controlGrupos.buscarPorCodigo(codigo);
                 tablaAsignaturasRegistradas();
                 enableComponents(panelGruposConsulta, true);
-                enableComponents(panelBotonesEliminar, false);
+                enableComponents(panelBotonesRelacion, false);
                 txtGrado.setText(grupoLocal.toString());
                 txtNAsignaturas.setText("" + grupoLocal.getCargaAcademicaList().size());
                 return true;
@@ -436,7 +528,6 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         return false;
     }
 
-
     private int seleccionTablaGrupoCodigo() {
         int indice = tablaGrupos.getSelectedRow();
         if (indice == -1) {
@@ -448,15 +539,13 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         }
     }
 
-
-
     private int seleccionTablaConsultaCodigo() {
         int indice = tablaConsulta.getSelectedRow();
         if (indice == -1) {
-            JOptionPane.showMessageDialog(panelCentral, "Seleccione una asignatura! ", "Validacion", JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(panelCentral, "Seleccione un registro! ", "Validacion", JOptionPane.QUESTION_MESSAGE);
             return -1;
         } else {
-            String codigo = String.valueOf(tablaConsulta.getValueAt(indice, 3));
+            String codigo = String.valueOf(tablaConsulta.getValueAt(indice, 0));
             return Integer.valueOf(codigo);
         }
     }
@@ -487,6 +576,14 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
         txtGrado.setText("");
         txtNAsignaturas.setText("");
         tablaConsulta.setModel(new DefaultTableModel());
+
+    }
+
+    private void limpiarPanelDocente() {
+        labelAsignatura.setText("");
+        comboDocente.setSelectedIndex(0);
+        enableComponents(panelDocente, false);
+        enableComponents(panelGruposConsulta, true);
     }
 
     public void enableComponents(Container container, boolean enable) {
@@ -503,21 +600,25 @@ public class ViewCargaAcademicaDocente extends javax.swing.JInternalFrame {
     private javax.swing.JButton botonAjustar;
     private javax.swing.JButton botonCancelar1;
     private javax.swing.JButton botonCancelar2;
+    private javax.swing.JButton botonCancelar3;
     private javax.swing.JButton botonConsulta;
     private javax.swing.JButton botonEliminar;
-    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonRegistrar;
+    private javax.swing.JComboBox<String> comboDocente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JPanel panelAsignaturas;
+    private javax.swing.JLabel labelAsignatura;
     private javax.swing.JPanel panelBotones;
-    private javax.swing.JPanel panelBotonesEliminar;
+    private javax.swing.JPanel panelBotonesRelacion;
     private javax.swing.JPanel panelCentral;
+    private javax.swing.JPanel panelDocente;
     private javax.swing.JPanel panelGrupos;
     private javax.swing.JPanel panelGruposConsulta;
     private javax.swing.JTable tablaConsulta;

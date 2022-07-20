@@ -48,12 +48,7 @@ public class ControllerDocente {
     }
 
     public List<Docente> verDocentesActivo() throws Exception{
-        List<Docente> lista = new ArrayList<Docente>();
-        dao.findDocenteEntities().stream().filter((docente) -> (docente.getEstado() == 1)).forEachOrdered((docente) -> {
-            lista.add(docente);
-        });
-
-        return lista;
+        return dao.findDocenteByEstado(1);
     }
 
     public int DocenteActivoIndice(Docente docente) throws Exception{
@@ -73,7 +68,7 @@ public class ControllerDocente {
         if(estado == 0){
             return dao.findDocenteEntities();
         }
-        return dao.findEstudianteByEstado(estado);
+        return dao.findDocenteByEstado(estado);
     }
 
     public DefaultTableModel getTabla(int numero) throws Exception{//Validar si la tabla esta vacia
