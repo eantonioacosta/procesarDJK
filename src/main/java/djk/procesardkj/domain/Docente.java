@@ -104,7 +104,6 @@ public class Docente implements Serializable {
         cargaAcademicaList = new ArrayList<>();
         grupoList = new ArrayList<>();
     }
-    
 
     public Integer getIdDocente() {
         return idDocente;
@@ -242,7 +241,7 @@ public class Docente implements Serializable {
     public String toString() {
         return "djk.procesardkj.domain.Docente[ idDocente=" + idDocente + " ]";
     }
-    
+
     private String getFormatFecha(Date fecha) {
         SimpleDateFormat objSDF = new SimpleDateFormat("dd-mm-yyyy");
         return objSDF.format(fecha);
@@ -264,9 +263,13 @@ public class Docente implements Serializable {
                 return "Sin definir";
         }
     }
-    
+
     public String getNombreCompleto() {
         return nombres + " " + apellidos;
+    }
+
+    public String getNombreCarga() {
+        return usuario.getCodigo()+" - "+ nombres + " " + apellidos;
     }
 
     public String getTipoSangreTexto() {

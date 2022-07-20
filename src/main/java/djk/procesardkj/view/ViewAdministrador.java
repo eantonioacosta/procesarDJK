@@ -1,11 +1,8 @@
-
 package djk.procesardkj.view;
-
 
 import djk.procesardkj.domain.AnioLectivo;
 import djk.procesardkj.domain.Usuario;
 import javax.swing.JOptionPane;
-
 
 public class ViewAdministrador extends javax.swing.JFrame {
 
@@ -14,20 +11,22 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }
     public static Usuario usuarioSistema;
     public static AnioLectivo anioLectivo;
+
     public ViewAdministrador(Usuario usuario, AnioLectivo anio) {
         initComponents();
         this.usuarioSistema = usuario;
         this.anioLectivo = anio;
         iniciarComponentes();
     }
-    private void iniciarComponentes(){
+
+    private void iniciarComponentes() {
         this.setExtendedState(MAXIMIZED_BOTH);
         jLabelUsuario.setText(usuarioSistema.getNombre());
         jLabelPerfil.setText(usuarioSistema.getNivelUsuarioText());
         jLabelAnio.setText(anioLectivo.getNombre());
-        if(usuarioSistema.getNivelUsuario()==1){
+        if (usuarioSistema.getNivelUsuario() == 1) {
             jMenuInicio.setVisible(true);
-        }else{
+        } else {
             jMenuInicio.setVisible(false);
         }
     }
@@ -269,7 +268,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu7.setPreferredSize(new java.awt.Dimension(179, 35));
 
         menuItemAreas.setText("Areas Asignatura");
-        menuItemAreas.setPreferredSize(new java.awt.Dimension(237, 30));
+        menuItemAreas.setPreferredSize(new java.awt.Dimension(250, 30));
         menuItemAreas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAreasActionPerformed(evt);
@@ -279,7 +278,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         itemAsignaruraGrupos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK));
         itemAsignaruraGrupos.setText("Carga Academica - grupos");
-        itemAsignaruraGrupos.setPreferredSize(new java.awt.Dimension(237, 30));
+        itemAsignaruraGrupos.setPreferredSize(new java.awt.Dimension(250, 30));
         itemAsignaruraGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemAsignaruraGruposActionPerformed(evt);
@@ -288,8 +287,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu7.add(itemAsignaruraGrupos);
 
         itemASignaturaDocente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.SHIFT_MASK));
-        itemASignaturaDocente.setText("Asignatura - Docente");
-        itemASignaturaDocente.setPreferredSize(new java.awt.Dimension(237, 30));
+        itemASignaturaDocente.setText("Carga Academica - docente");
+        itemASignaturaDocente.setPreferredSize(new java.awt.Dimension(250, 30));
         itemASignaturaDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemASignaturaDocenteActionPerformed(evt);
@@ -453,12 +452,12 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-                  if (JOptionPane.showConfirmDialog(rootPane, "Seguro que desea salir?",
-        "AVISO", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-                new ViewLogin().setVisible(true);
-                this.dispose();
-                  }
-         
+        if (JOptionPane.showConfirmDialog(rootPane, "Seguro que desea salir?",
+                "AVISO", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            new ViewLogin().setVisible(true);
+            this.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void menuItemUsuarios(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarios
@@ -509,10 +508,9 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAsignaruraGruposActionPerformed
 
     private void itemASignaturaDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemASignaturaDocenteActionPerformed
-//        FormDocenteAsignatura ventana = new FormDocenteAsignatura();
-//        layeredPanel.add(ventana);
-//        ventana.setVisible(true);
-        
+        ViewCargaAcademicaDocente cargaAcademicaView = new ViewCargaAcademicaDocente();
+        layeredPanel.add(cargaAcademicaView);
+        cargaAcademicaView.setVisible(true);
     }//GEN-LAST:event_itemASignaturaDocenteActionPerformed
 
 

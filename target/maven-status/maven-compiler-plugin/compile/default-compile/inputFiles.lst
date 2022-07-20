@@ -24,7 +24,6 @@ D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\AsignaturaJpaController.
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\exceptions\IllegalOrphanException.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerDocente.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\exceptions\NonexistentEntityException.java
-D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewCargaAcademicaGrupos.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewAdministrador.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\CargaAcademicaJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerAsignaturas.java
@@ -37,6 +36,7 @@ D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewAniosLectivos.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerAnioLectivo.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Matricula.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewAsignaturas.java
+D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\ViewCargaAcademicaDocente.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Area.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerGrupo.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\CargaAcademica.java

@@ -141,8 +141,11 @@ public class CargaAcademica implements Serializable {
 
     @Override
     public String toString() {
-        return "djk.procesardkj.domain.CargaAcademica[ idCarga=" + idCarga + " ]";
+        return asignatura.getNombre()+" / "+getDocenteTexto();
     }
 
+    public String getDocenteTexto(){
+        return (docente !=null)? docente.getNombreCarga():"No tiene docente";
+    }
     
 }

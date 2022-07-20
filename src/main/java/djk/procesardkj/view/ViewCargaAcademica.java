@@ -9,10 +9,7 @@ import djk.procesardkj.domain.CargaAcademica;
 import djk.procesardkj.domain.Grupo;
 import java.awt.Component;
 import java.awt.Container;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -96,11 +93,12 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         panelCentral.setBackground(new java.awt.Color(255, 255, 255));
         panelCentral.setPreferredSize(new java.awt.Dimension(1200, 640));
 
-        panelGrupos.setBackground(new java.awt.Color(204, 204, 204));
+        panelGrupos.setBackground(new java.awt.Color(255, 255, 255));
         panelGrupos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Grupos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jScrollPane1.setViewportView(tablaGrupos);
 
+        panelBotones.setBackground(null);
         panelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -155,11 +153,12 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        panelGruposConsulta.setBackground(new java.awt.Color(204, 204, 204));
+        panelGruposConsulta.setBackground(new java.awt.Color(255, 255, 255));
         panelGruposConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Consulta asignaturas asociadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jScrollPane2.setViewportView(tablaConsulta);
 
+        panelBotonesEliminar.setBackground(null);
         panelBotonesEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonEliminar.setText("Eliminar");
@@ -200,7 +199,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        panelAsignaturas.setBackground(new java.awt.Color(204, 204, 204));
+        panelAsignaturas.setBackground(new java.awt.Color(255, 255, 255));
         panelAsignaturas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Asignaturas disponibles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jScrollPane3.setViewportView(tablaAsignatura);
@@ -274,7 +273,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         txtGrado.setBackground(new java.awt.Color(255, 255, 255));
@@ -376,8 +375,6 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             botonAgregar();
             enableComponents(panelAsignaturas, true);
             enableComponents(panelGrupos, false);
-            txtGrado.setText(grupoLocal.toString());
-            txtNAsignaturas.setText("" + grupoLocal.getCargaAcademicaList().size());
         }
 
     }//GEN-LAST:event_botonAgregarActionPerformed
@@ -405,8 +402,6 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
             enableComponents(panelBotonesEliminar, true);
             enableComponents(panelAsignaturas, false);
             enableComponents(panelGrupos, false);
-            txtGrado.setText(grupoLocal.toString());
-            txtNAsignaturas.setText("" + grupoLocal.getCargaAcademicaList().size());
         }
     }//GEN-LAST:event_botonAjustarActionPerformed
 
@@ -418,8 +413,7 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
         if (codigo != -1) {
             try {
                 controlCarga.eliminar(codigo);
-                JOptionPane.showMessageDialog(panelCentral, "Asignatura eliminada exitosamente.",
-                        "Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
+                JOptionPane.showMessageDialog(panelCentral, "Asignatura eliminada exitosamente.","Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
                 botonAjustarActionPerformed(null);
             } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
@@ -437,6 +431,8 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 tablaAsignaturasRegistradas();
                 enableComponents(panelGruposConsulta, true);
                 enableComponents(panelBotonesEliminar, false);
+                txtGrado.setText(grupoLocal.toString());
+                txtNAsignaturas.setText("" + grupoLocal.getCargaAcademicaList().size());
                 return true;
             } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);

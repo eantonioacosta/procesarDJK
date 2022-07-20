@@ -18,7 +18,8 @@ public class ControllerAsignaturas {
         if(asignatura.getNombre().trim().length()==0){
             throw new NullPointerException("Favor ingresar el nombre");
         }
-        if(asignatura.getArea().getIdArea()==0 || asignatura.getArea().getIdArea()==-1){
+        
+        if(asignatura.getArea()== null){
             throw new NullPointerException("Favor de seleccionar el area");
         }
         dao.create(asignatura);

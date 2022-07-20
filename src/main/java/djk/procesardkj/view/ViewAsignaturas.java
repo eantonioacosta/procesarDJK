@@ -661,12 +661,11 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         int iHoraria = (int) spinnerHoraria.getValue();
         int porcentaje = comboPorcentaje.getSelectedIndex();
         int itemArea = comboArea.getSelectedIndex() - 1;
-        Area area = null;
+        Area area;
         try {
             area = controlArea.buscarPorItem(itemArea);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelAsignaturas, ex.getMessage(), "Excepción", JOptionPane.WARNING_MESSAGE);
-
+            area = null;
         }
         return new Asignatura(codigo, nombre, iHoraria, nombreCompleto, porcentaje, area);
     }
