@@ -248,6 +248,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/documento_1.png"))); // NOI18N
         btnNuevo.setText("NUEVO");
+        btnNuevo.setPreferredSize(new java.awt.Dimension(117, 25));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -268,6 +269,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setMaximumSize(new java.awt.Dimension(97, 23));
         btnEliminar.setMinimumSize(new java.awt.Dimension(97, 23));
+        btnEliminar.setPreferredSize(new java.awt.Dimension(117, 25));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -366,7 +368,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(panelAsignaturasLayout.createSequentialGroup()
-                        .addComponent(btnNuevo)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

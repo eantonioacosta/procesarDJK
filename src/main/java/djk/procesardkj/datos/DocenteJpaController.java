@@ -281,7 +281,7 @@ public class DocenteJpaController implements Serializable {
         }
     }
     
-        public List<Docente> findDocenteByEstado(int estado) {
+    public List<Docente> findDocenteByEstado(int estado) {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Docente> consulta = em.createNamedQuery("Docente.findByEstado", Docente.class);

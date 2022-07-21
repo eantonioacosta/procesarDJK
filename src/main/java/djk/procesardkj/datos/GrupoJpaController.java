@@ -21,6 +21,7 @@ import djk.procesardkj.domain.Matricula;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -298,5 +299,4 @@ public class GrupoJpaController implements Serializable {
             em.close();
         }
     }
-    
 }

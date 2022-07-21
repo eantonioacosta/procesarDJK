@@ -57,7 +57,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         MenuItemMatricular = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemRegistrar = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMenu7 = new javax.swing.JMenu();
@@ -252,9 +252,14 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu6.add(jMenuItem9);
         jMenu6.add(jSeparator1);
 
-        jMenuItem1.setText("Retirar del Grado");
-        jMenuItem1.setPreferredSize(new java.awt.Dimension(237, 30));
-        jMenu6.add(jMenuItem1);
+        jMenuItemRegistrar.setText("Registrar Estudiante");
+        jMenuItemRegistrar.setPreferredSize(new java.awt.Dimension(237, 30));
+        jMenuItemRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRegistrarActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItemRegistrar);
 
         jMenuItem2.setText("Borrar del Sistema");
         jMenuItem2.setPreferredSize(new java.awt.Dimension(237, 30));
@@ -513,6 +518,12 @@ public class ViewAdministrador extends javax.swing.JFrame {
         cargaAcademicaView.setVisible(true);
     }//GEN-LAST:event_itemASignaturaDocenteActionPerformed
 
+    private void jMenuItemRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarActionPerformed
+        ViewEstudiantes estudiantesView = new ViewEstudiantes();
+        layeredPanel.add(estudiantesView);
+        estudiantesView.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRegistrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemMatricular;
@@ -540,7 +551,6 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuInicio;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
@@ -564,6 +574,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemRegistrar;
     private javax.swing.JMenu jMenuProcesos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;

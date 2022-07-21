@@ -6,6 +6,7 @@
 package djk.procesardkj.datos;
 
 import djk.procesardkj.datos.exceptions.NonexistentEntityException;
+import djk.procesardkj.domain.Docente;
 import djk.procesardkj.domain.Estudiante;
 import java.io.Serializable;
 import javax.persistence.Query;
@@ -296,6 +297,20 @@ public class EstudianteJpaController implements Serializable {
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
         } finally {
+            em.close();
+        }
+    }
+    
+    public List<Estudiante> findByEstado(String estado) throws Exception{
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Estudiante> consulta = em.createNamedQuery("Estudiante.findByEstado", Estudiante.class);
+            consulta.setParameter("estado", estado);
+            return consulta.getResultList();
+        }catch(Exception ex){
+            throw ex;
+        }
+        finally {
             em.close();
         }
     }

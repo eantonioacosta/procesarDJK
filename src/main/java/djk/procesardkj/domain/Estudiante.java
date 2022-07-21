@@ -6,6 +6,7 @@
 package djk.procesardkj.domain;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -116,6 +117,24 @@ public class Estudiante implements Serializable {
     public Estudiante(Integer idEstudiante, String identificacion) {
         this.idEstudiante = idEstudiante;
         this.identificacion = identificacion;
+    }
+
+    public Estudiante(String identificacion, Integer tipoId, String estado, Date expedicion, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Integer sexo, Date fechaNacimiento, String direccion, Integer tipoSangre, Date fechaIngreso, String correo, String lugarExpedicion) {
+        this.identificacion = identificacion;
+        this.tipoId = tipoId;
+        this.estado = estado;
+        this.expedicion = expedicion;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.tipoSangre = tipoSangre;
+        this.fechaIngreso = fechaIngreso;
+        this.correo = correo;
+        this.lugarExpedicion = lugarExpedicion;
     }
 
     public Integer getIdEstudiante() {
@@ -297,10 +316,85 @@ public class Estudiante implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
-        return "djk.procesardkj.domain.Estudiante[ idEstudiante=" + idEstudiante + " ]";
+        return "Estudiante{" + "identificacion=" + identificacion + 
+                ", tipoId=" + tipoId + ", estado=" + estado + 
+                ", expedicion=" + expedicion + ", primerNombre=" + primerNombre + 
+                ", segundoNombre=" + segundoNombre + ", primerApellido=" + primerApellido + 
+                ", segundoApellido=" + segundoApellido + ", sexo=" + sexo + 
+                ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion + 
+                ", tipoSangre=" + tipoSangre + ", fechaIngreso=" + fechaIngreso + 
+                 ", correo=" + correo + 
+                ", lugarExpedicion=" + lugarExpedicion + '}';
     }
-    
+
+    public String getTipoSangreTexto() {
+        switch (tipoSangre) {
+            case 1:
+                return "O negativo (O-)";
+            case 2:
+                return "O positivo (O+)";
+            case 3:
+                return "A positivo (A +)";
+            case 4:
+                return "A negativo (A-)";
+            case 5:
+                return "B positivo (B +)";
+            case 6:
+                return "B negativo (B-)";
+            case 7:
+                return "AB negativo (AB-)";
+            case 8:
+                return "AB positivo (AB+)";
+            default:
+                return "Otro";
+        }
+    }
+
+    public String getSexoTexto() {
+        switch (sexo) {
+            case 1:
+                return "Masculino";
+            case 2:
+                return "Femenino";
+            case 3:
+                return "Otro";
+            default:
+                return "Sin definir";
+        }
+    }
+
+    public String getTipoIdTexto() {
+        switch (tipoId) {
+            case 1:
+                return "RC";
+            case 2:
+                return "TI";
+            case 3:
+                return "CC";
+            case 4:
+                return "PASAPORTE";
+            default:
+                return "Sin Definir";
+        }
+    }
+
+    private String getFormatFecha(Date fecha) {
+        SimpleDateFormat objSDF = new SimpleDateFormat("dd-mm-yyyy");
+        return objSDF.format(fecha);
+    }
+
+    public String getFechaIngresoTexto() {
+        return getFormatFecha(fechaIngreso);
+    }
+
+    public String getFechaNacimientoTexto() {
+        return getFormatFecha(fechaNacimiento);
+    }
+
+    public String getExpedicionTexto() {
+        return getFormatFecha(expedicion);
+    }
 }
