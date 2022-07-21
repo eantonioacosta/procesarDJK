@@ -111,12 +111,13 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonParientes = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         labelCCPadre = new javax.swing.JLabel();
         labelCCMadre = new javax.swing.JLabel();
         jLabelCCPadre = new javax.swing.JLabel();
         jLabelCCMAdre = new javax.swing.JLabel();
+        botonConsultar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Creacion y Modificacion de datos para Estudiantes");
@@ -156,7 +157,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 160, -1));
+        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 160, -1));
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
@@ -167,7 +168,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 170, -1));
+        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 170, -1));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
@@ -185,7 +186,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 textoFiltroKeyReleased(evt);
             }
         });
-        panelCentral.add(textoFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 210, -1));
+        panelCentral.add(textoFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 170, -1));
 
         comboFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Activo", "Suspendido", "Retirado" }));
         comboFilter.addActionListener(new java.awt.event.ActionListener() {
@@ -193,11 +194,11 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 comboFilterActionPerformed(evt);
             }
         });
-        panelCentral.add(comboFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 140, -1));
+        panelCentral.add(comboFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 140, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel14.setText("BUSCAR:");
-        panelCentral.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        panelCentral.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         panelCreacion.setBackground(new java.awt.Color(255, 255, 255));
         panelCreacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del estudiante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -366,9 +367,14 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         jLabel20.setText("Parientes:");
         panelCreacion.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("+");
-        panelCreacion.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, 140, -1));
+        botonParientes.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        botonParientes.setText("+");
+        botonParientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonParientesActionPerformed(evt);
+            }
+        });
+        panelCreacion.add(botonParientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, 140, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de los padres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -417,6 +423,18 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         panelCreacion.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 270, 80));
 
         panelCentral.add(panelCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1150, 320));
+
+        botonConsultar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/busqueda.png"))); // NOI18N
+        botonConsultar.setText("CONSULTAR");
+        botonConsultar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        botonConsultar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarActionPerformed(evt);
+            }
+        });
+        panelCentral.add(botonConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -473,6 +491,14 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         int opc = comboFilter.getSelectedIndex();
         //cargarTabla(opc);
     }//GEN-LAST:event_comboFilterActionPerformed
+
+    private void botonParientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParientesActionPerformed
+        
+    }//GEN-LAST:event_botonParientesActionPerformed
+
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+        botonConsultar();
+    }//GEN-LAST:event_botonConsultarActionPerformed
     private void botonEliminar() {
         int codigo = seleccionTablaCodigo();
 
@@ -491,6 +517,25 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                             JOptionPane.WARNING_MESSAGE);
                 }
 
+            }
+
+        }
+    }
+    private void botonConsultar(){
+        int codigo = seleccionTablaCodigo();
+        if (codigo != -1) {
+            Estudiante estudiante;
+            try {
+                estudiante = control.buscarPorCodigo(codigo);
+                //pintarCampos(estudiante);
+                ViewEstudianteResumen resumen =new ViewEstudianteResumen(estudiante);
+                ViewAdministrador.escritorio.add(resumen);
+                resumen.toFront();
+                resumen.show();
+            } catch (NullPointerException ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
             }
 
         }
@@ -718,6 +763,8 @@ return null;
         tr.setRowFilter(RowFilter.regexFilter(consulta));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonParientes;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
@@ -728,7 +775,6 @@ return null;
     private javax.swing.JComboBox<String> comboTipoSangre;
     private com.toedter.calendar.JDateChooser dateExpedicion;
     private com.toedter.calendar.JDateChooser dateNacimiento;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

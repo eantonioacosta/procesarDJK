@@ -97,6 +97,7 @@ public class ViewGrupos extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
         setResizable(true);
         setTitle("Creacion/Modificacion de grupos");
         setMinimumSize(new java.awt.Dimension(730, 590));

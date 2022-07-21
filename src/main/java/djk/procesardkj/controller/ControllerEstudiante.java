@@ -78,7 +78,6 @@ public class ControllerEstudiante {
         
         String[] fila = new String[columnas.length];
         for (Estudiante estudiante : buscarPorEstado(estado)) {
-            System.out.println(estudiante.toString());
             fila[0] = "" + estudiante.getIdEstudiante();
             fila[1] = estudiante.getIdentificacion();
             fila[2] = estudiante.getTipoIdTexto();

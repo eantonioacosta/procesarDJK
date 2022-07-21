@@ -382,7 +382,7 @@ public class Estudiante implements Serializable {
     }
 
     private String getFormatFecha(Date fecha) {
-        SimpleDateFormat objSDF = new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
         return objSDF.format(fecha);
     }
 

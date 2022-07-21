@@ -106,6 +106,8 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Creacion y Modificacion de datos para Docentes");
         setPreferredSize(new java.awt.Dimension(1200, 640));
 
