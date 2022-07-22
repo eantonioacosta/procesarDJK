@@ -22,7 +22,24 @@ public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
 
     public ViewEstudianteResumen(Estudiante estudiante) {
         initComponents();
-        txtPrimerApellidoEstudiante.setText(estudiante.getPrimerApellido());
+        pintarCampos(estudiante);
+    }
+    
+    private void pintarCampos(Estudiante e){
+        txtIdentificacionEstudiante.setText(e.getIdentificacion());
+        txtTipoIdEstudiante.setText(e.getTipoIdTexto());
+        txtPrimerNombreEstudiante.setText(e.getPrimerNombre());
+        txtSegundoNombreEstudiante.setText(e.getSegundoNombre());
+        txtPrimerApellidoEstudiante.setText(e.getPrimerApellido());
+        txtSegundoApellidoEstudiante.setText(e.getSegundoApellido());
+        txtCorreoEstudiante.setText(e.getCorreo());
+        txtDireccionEstudiante.setText(e.getDireccion());
+        txtFechaExpedicionEstudiante.setText(e.getExpedicionTexto());
+        txtFechaIngresoEstudiante.setText(e.getFechaIngresoTexto());
+        txtFechaNacimientoEstudiante.setText(e.getFechaNacimientoTexto());
+        txtTipoSangreEstudiante.setText(e.getTipoSangreTexto());
+        txtSexoEstudiante.setText(e.getSexoTexto());
+        txtLugarExpedicionEstudiante.setText(e.getLugarExpedicion());
     }
 
     /**
@@ -44,11 +61,9 @@ public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        labelMatricula = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         txtFechaIngresoEstudiante = new javax.swing.JLabel();
-        textoMatricula = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -93,266 +108,284 @@ public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
         txtCorreoMadre = new javax.swing.JLabel();
         txtTipoIdMadre = new javax.swing.JLabel();
         botonCerrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelDatosEstudiante.setBackground(new java.awt.Color(255, 255, 255));
         panelDatosEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 204, 51), null), "Datos del estudiante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
         panelDatosEstudiante.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("1er Apellido:");
+        jLabel8.setPreferredSize(new java.awt.Dimension(120, 15));
         panelDatosEstudiante.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("2do Nombre:");
-        panelDatosEstudiante.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
+        panelDatosEstudiante.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("2do Apellido:");
         panelDatosEstudiante.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Tipo de identificacion:");
-        panelDatosEstudiante.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setText("Tipo Identificacion:");
+        panelDatosEstudiante.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("No. Identificacion:");
-        panelDatosEstudiante.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 113, -1));
+        panelDatosEstudiante.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 113, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Correo:");
-        panelDatosEstudiante.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+        panelDatosEstudiante.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("Fecha de Expedicion:");
-        panelDatosEstudiante.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+        panelDatosEstudiante.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Lugar Expedicion: ");
-        panelDatosEstudiante.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
+        panelDatosEstudiante.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
 
-        labelMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        labelMatricula.setText("No. de Matricula:");
-        panelDatosEstudiante.add(labelMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel18.setText("Fecha de Nacimiento:");
-        panelDatosEstudiante.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
+        panelDatosEstudiante.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Tipo Sangre:");
-        panelDatosEstudiante.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+        panelDatosEstudiante.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
 
-        txtFechaIngresoEstudiante.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtFechaIngresoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtFechaIngresoEstudiante.setForeground(new java.awt.Color(0, 153, 51));
         txtFechaIngresoEstudiante.setText("yyyy-MM-dd");
-        panelDatosEstudiante.add(txtFechaIngresoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 100, -1));
+        txtFechaIngresoEstudiante.setPreferredSize(new java.awt.Dimension(48, 15));
+        panelDatosEstudiante.add(txtFechaIngresoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 100, -1));
 
-        textoMatricula.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        textoMatricula.setForeground(new java.awt.Color(204, 0, 51));
-        textoMatricula.setText("0");
-        panelDatosEstudiante.add(textoMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 100, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Feha Ingreso:");
-        panelDatosEstudiante.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+        panelDatosEstudiante.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel20.setText("Direccion:");
-        panelDatosEstudiante.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jLabel20.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 70, -1));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel21.setText("Sexo:");
-        panelDatosEstudiante.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
+        panelDatosEstudiante.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 80, -1));
 
-        labelPrimerNombreEstudiante.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelPrimerNombreEstudiante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelPrimerNombreEstudiante.setText("1er Nombre:");
-        panelDatosEstudiante.add(labelPrimerNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        labelPrimerNombreEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(labelPrimerNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, -1));
 
-        txtPrimerNombreEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtPrimerNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 180, -1));
+        txtPrimerNombreEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPrimerNombreEstudiante.setText("1er Nombre:");
+        txtPrimerNombreEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtPrimerNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 150, -1));
 
-        txtDireccionEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtDireccionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 190, -1));
+        txtDireccionEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDireccionEstudiante.setText("Direccion:");
+        txtDireccionEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtDireccionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 150, -1));
 
-        txtPrimerApellidoEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtPrimerApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 180, -1));
+        txtPrimerApellidoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPrimerApellidoEstudiante.setText("1er Apellido:");
+        txtPrimerApellidoEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtPrimerApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 150, -1));
 
-        txtSegundoApellidoEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtSegundoApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 180, -1));
+        txtSegundoApellidoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSegundoApellidoEstudiante.setText("2do Apellido:");
+        txtSegundoApellidoEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtSegundoApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 150, -1));
 
-        txtCorreoEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtCorreoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 220, -1));
+        txtCorreoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCorreoEstudiante.setText("Correo:");
+        txtCorreoEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtCorreoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 150, -1));
 
-        txtTipoSangreEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtTipoSangreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, 140, -1));
+        txtTipoSangreEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTipoSangreEstudiante.setText("Tipo Sangre:");
+        txtTipoSangreEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtTipoSangreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 150, 150, -1));
 
-        txtTipoIdEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtTipoIdEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 150, -1));
+        txtTipoIdEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTipoIdEstudiante.setText("Tipo de identificacion:");
+        panelDatosEstudiante.add(txtTipoIdEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 150, -1));
 
-        txtSegundoNombreEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtSegundoNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 180, -1));
+        txtSegundoNombreEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSegundoNombreEstudiante.setText("2do Nombre:");
+        txtSegundoNombreEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtSegundoNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 150, -1));
 
-        txtIdentificacionEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtIdentificacionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 150, -1));
+        txtIdentificacionEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtIdentificacionEstudiante.setText("No. Identificacion:");
+        txtIdentificacionEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtIdentificacionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 150, -1));
 
-        txtFechaExpedicionEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtFechaExpedicionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 140, -1));
+        txtFechaExpedicionEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFechaExpedicionEstudiante.setText("Fecha de Expedicion:");
+        txtFechaExpedicionEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtFechaExpedicionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 140, -1));
 
-        txtLugarExpedicionEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtLugarExpedicionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 160, -1));
+        txtLugarExpedicionEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtLugarExpedicionEstudiante.setText("Lugar Expedicion: ");
+        txtLugarExpedicionEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtLugarExpedicionEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 160, -1));
 
-        txtFechaNacimientoEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtFechaNacimientoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 140, -1));
+        txtFechaNacimientoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFechaNacimientoEstudiante.setText("Fecha de Nacimiento:");
+        txtFechaNacimientoEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtFechaNacimientoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 150, -1));
 
-        txtSexoEstudiante.setText("------------");
-        panelDatosEstudiante.add(txtSexoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, 140, -1));
+        txtSexoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSexoEstudiante.setText("Sexo:");
+        txtSexoEstudiante.setPreferredSize(new java.awt.Dimension(120, 15));
+        panelDatosEstudiante.add(txtSexoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 150, -1));
+
+        jPanel1.add(panelDatosEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 937, 192));
 
         panelDatosPadre.setBackground(new java.awt.Color(255, 255, 255));
         panelDatosPadre.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 204, 204), null), "Datos del padre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
         panelDatosPadre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelNombresPadre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelNombresPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelNombresPadre.setText("Nombres:");
-        panelDatosPadre.add(labelNombresPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        panelDatosPadre.add(labelNombresPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        labelApellidosPadre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelApellidosPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelApellidosPadre.setText("Apellidos:");
-        panelDatosPadre.add(labelApellidosPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        panelDatosPadre.add(labelApellidosPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        labelTipoIdPadre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        labelTipoIdPadre.setText("Tipo de identificacion:");
+        labelTipoIdPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTipoIdPadre.setText("Tipo identificacion:");
         panelDatosPadre.add(labelTipoIdPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        labelIdPadre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelIdPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelIdPadre.setText("No. Identificacion:");
-        panelDatosPadre.add(labelIdPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 113, -1));
+        panelDatosPadre.add(labelIdPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 113, -1));
 
-        labelCorreoPadre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelCorreoPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelCorreoPadre.setText("Correo:");
-        panelDatosPadre.add(labelCorreoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        panelDatosPadre.add(labelCorreoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        labelTelefonoPadre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelTelefonoPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelTelefonoPadre.setText("Telefono:");
-        panelDatosPadre.add(labelTelefonoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        panelDatosPadre.add(labelTelefonoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        txtTipoIdPadre.setText("------------");
-        panelDatosPadre.add(txtTipoIdPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 150, -1));
+        txtTipoIdPadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTipoIdPadre.setText("Tipo identificacion");
+        panelDatosPadre.add(txtTipoIdPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 150, -1));
 
-        txtApellidosPadre.setText("------------");
-        panelDatosPadre.add(txtApellidosPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 210, -1));
+        txtApellidosPadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtApellidosPadre.setText("Apellidos:");
+        panelDatosPadre.add(txtApellidosPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 190, -1));
 
-        txtCorreoPadre.setText("------------");
-        panelDatosPadre.add(txtCorreoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 210, -1));
+        txtCorreoPadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCorreoPadre.setText("Correo:");
+        panelDatosPadre.add(txtCorreoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 190, -1));
 
-        txtIdPadres.setText("------------");
-        panelDatosPadre.add(txtIdPadres, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 100, -1));
+        txtIdPadres.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtIdPadres.setText("No. Identificacion:");
+        panelDatosPadre.add(txtIdPadres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 160, -1));
 
-        txtTelefonoPadre.setText("------------");
-        panelDatosPadre.add(txtTelefonoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 210, -1));
+        txtTelefonoPadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTelefonoPadre.setText("Telefono:");
+        panelDatosPadre.add(txtTelefonoPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 150, -1));
 
-        txtNombresPadre.setText("------------");
-        panelDatosPadre.add(txtNombresPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 210, -1));
+        txtNombresPadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNombresPadre.setText("Nombres:");
+        panelDatosPadre.add(txtNombresPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 190, -1));
+
+        jPanel1.add(panelDatosPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 380, 210));
 
         panelDatosMadre.setBackground(new java.awt.Color(255, 255, 255));
         panelDatosMadre.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 0, 51), null), "Datos de la madre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
         panelDatosMadre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelPrimerNombre2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelPrimerNombre2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelPrimerNombre2.setText("Nombres:");
-        panelDatosMadre.add(labelPrimerNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        panelDatosMadre.add(labelPrimerNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel26.setText("Apellidos:");
-        panelDatosMadre.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        panelDatosMadre.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel27.setText("Tipo de identificacion:");
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel27.setText("Tipo identificacion:");
+        jLabel27.setPreferredSize(new java.awt.Dimension(120, 15));
         panelDatosMadre.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel28.setText("No. Identificacion:");
-        panelDatosMadre.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 113, -1));
+        panelDatosMadre.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 113, -1));
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel29.setText("Correo:");
-        panelDatosMadre.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        panelDatosMadre.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setText("Telefono:");
-        panelDatosMadre.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        panelDatosMadre.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        txtTelefonoMadre.setText("------------");
-        panelDatosMadre.add(txtTelefonoMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 210, -1));
+        txtTelefonoMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTelefonoMadre.setText("Telefono:");
+        panelDatosMadre.add(txtTelefonoMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 200, -1));
 
-        txtIdMadre.setText("------------");
-        panelDatosMadre.add(txtIdMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 100, -1));
+        txtIdMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtIdMadre.setText("No. Identificacion:");
+        panelDatosMadre.add(txtIdMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, -1));
 
-        txtApellidosMadre.setText("------------");
-        panelDatosMadre.add(txtApellidosMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 210, -1));
+        txtApellidosMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtApellidosMadre.setText("Apellidos:");
+        panelDatosMadre.add(txtApellidosMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 200, -1));
 
-        txtNombresMadre.setText("------------");
-        panelDatosMadre.add(txtNombresMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 210, -1));
+        txtNombresMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNombresMadre.setText("Nombres:");
+        panelDatosMadre.add(txtNombresMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 200, -1));
 
-        txtCorreoMadre.setText("------------");
-        panelDatosMadre.add(txtCorreoMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 210, -1));
+        txtCorreoMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCorreoMadre.setText("Correo:");
+        panelDatosMadre.add(txtCorreoMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, -1));
 
-        txtTipoIdMadre.setText("------------");
+        txtTipoIdMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTipoIdMadre.setText("Tipo identificacion:");
         panelDatosMadre.add(txtTipoIdMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 140, -1));
 
-        botonCerrar.setText("Cerrar");
+        jPanel1.add(panelDatosMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 380, 210));
+
+        botonCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonCerrar.setText("CERRAR");
         botonCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCerrarActionPerformed(evt);
             }
         });
+        jPanel1.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 380, 110, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(802, Short.MAX_VALUE)
-                .addComponent(botonCerrar)
-                .addGap(88, 88, 88))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 21, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelDatosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(panelDatosPadre, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(panelDatosMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 22, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(281, Short.MAX_VALUE)
-                .addComponent(botonCerrar)
-                .addGap(71, 71, 71))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 41, Short.MAX_VALUE)
-                    .addComponent(panelDatosEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(11, 11, 11)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelDatosPadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelDatosMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 41, Short.MAX_VALUE)))
-        );
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("HOJA DE VIDA");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("IMPRIMIR");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 957, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
 
         pack();
@@ -365,6 +398,8 @@ public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -387,7 +422,6 @@ public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
     private javax.swing.JLabel labelApellidosPadre;
     private javax.swing.JLabel labelCorreoPadre;
     private javax.swing.JLabel labelIdPadre;
-    private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelNombresPadre;
     private javax.swing.JLabel labelPrimerNombre2;
     private javax.swing.JLabel labelPrimerNombreEstudiante;
@@ -396,7 +430,6 @@ public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelDatosEstudiante;
     private javax.swing.JPanel panelDatosMadre;
     private javax.swing.JPanel panelDatosPadre;
-    private javax.swing.JLabel textoMatricula;
     private javax.swing.JLabel txtApellidosMadre;
     private javax.swing.JLabel txtApellidosPadre;
     private javax.swing.JLabel txtCorreoEstudiante;

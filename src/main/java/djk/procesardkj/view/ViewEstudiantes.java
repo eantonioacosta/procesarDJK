@@ -6,7 +6,9 @@ import djk.procesardkj.domain.Docente;
 import djk.procesardkj.domain.Estudiante;
 import java.awt.Component;
 import java.awt.Container;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -17,7 +19,8 @@ import javax.swing.table.TableRowSorter;
 public class ViewEstudiantes extends javax.swing.JInternalFrame {
 
     ControllerEstudiante control;
-    final String ACTIVO = "Activo"; 
+    final String ACTIVO = "Activo";
+
     public ViewEstudiantes() {
         initComponents();
         iniciarComponentes();
@@ -36,26 +39,27 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
             tablaEstudiantes.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = tablaEstudiantes.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(30);
-            columnModel.getColumn(1).setPreferredWidth(150);
+            columnModel.getColumn(1).setPreferredWidth(120);
             columnModel.getColumn(2).setPreferredWidth(60);
-            columnModel.getColumn(3).setPreferredWidth(100);
-            columnModel.getColumn(4).setPreferredWidth(150);
-            columnModel.getColumn(5).setPreferredWidth(150);
-            columnModel.getColumn(6).setPreferredWidth(150);
-            columnModel.getColumn(7).setPreferredWidth(150);
-            columnModel.getColumn(8).setPreferredWidth(100);
-            columnModel.getColumn(9).setPreferredWidth(100);
+            columnModel.getColumn(3).setPreferredWidth(70);
+            columnModel.getColumn(4).setPreferredWidth(100);
+            columnModel.getColumn(5).setPreferredWidth(100);
+            columnModel.getColumn(6).setPreferredWidth(100);
+            columnModel.getColumn(7).setPreferredWidth(100);
+            columnModel.getColumn(8).setPreferredWidth(80);
+            columnModel.getColumn(9).setPreferredWidth(80);
             columnModel.getColumn(10).setPreferredWidth(150);
-            columnModel.getColumn(11).setPreferredWidth(150);
-            columnModel.getColumn(12).setPreferredWidth(150);
-            columnModel.getColumn(13).setPreferredWidth(150);
-
+            columnModel.getColumn(11).setPreferredWidth(100);
+            columnModel.getColumn(12).setPreferredWidth(80);
+            columnModel.getColumn(13).setPreferredWidth(120);
+            columnModel.getColumn(14).setPreferredWidth(120);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,7 +161,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 160, -1));
+        panelCentral.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 150, -1));
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/editar.png"))); // NOI18N
@@ -168,7 +172,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 170, -1));
+        panelCentral.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 150, -1));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/basura.png"))); // NOI18N
@@ -194,71 +198,71 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 comboFilterActionPerformed(evt);
             }
         });
-        panelCentral.add(comboFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 140, -1));
+        panelCentral.add(comboFilter, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 140, 20));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jLabel14.setText("BUSCAR:");
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel14.setText("Buscar");
         panelCentral.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         panelCreacion.setBackground(new java.awt.Color(255, 255, 255));
         panelCreacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del estudiante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         panelCreacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelPrimerNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelPrimerNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelPrimerNombre.setText("1er Nombre:");
         panelCreacion.add(labelPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("1er Apellido:");
-        panelCreacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        panelCreacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
         panelCreacion.add(texto1nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 183, -1));
-        panelCreacion.add(textoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 183, -1));
+        panelCreacion.add(textoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 183, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("2do Nombre:");
-        panelCreacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        panelCreacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("2do Apellido:");
-        panelCreacion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        panelCreacion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
         panelCreacion.add(texto2nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 183, -1));
-        panelCreacion.add(texto2Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 183, -1));
+        panelCreacion.add(texto2Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 183, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Tipo de identificacion:");
-        panelCreacion.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setText("Tipo Identificacion:");
+        panelCreacion.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         comboTipoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:", "RC", "TI", "CC", "PASAPORTE" }));
-        panelCreacion.add(comboTipoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 180, -1));
+        panelCreacion.add(comboTipoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 180, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("No. Identificacion:");
-        panelCreacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 110, -1));
+        panelCreacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 120, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Correo:");
-        panelCreacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 50, 10));
-        panelCreacion.add(dateNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 140, 180, -1));
-        panelCreacion.add(textoIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 183, -1));
+        panelCreacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 50, -1));
+        panelCreacion.add(dateNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 180, -1));
+        panelCreacion.add(textoIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 183, -1));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("Fecha de Expedicion:");
-        panelCreacion.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, -1, -1));
-        panelCreacion.add(dateExpedicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 60, 180, -1));
+        panelCreacion.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, -1, -1));
+        panelCreacion.add(dateExpedicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, 180, -1));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Lugar Expedicion: ");
-        panelCreacion.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, -1, -1));
-        panelCreacion.add(textoLugarExpe, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, 183, -1));
+        panelCreacion.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, -1, -1));
+        panelCreacion.add(textoLugarExpe, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 60, 183, -1));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel17.setText("id Estudiante");
-        panelCreacion.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel17.setText("Id Estudiante:");
+        panelCreacion.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel18.setText("Fecha de Nacimiento:");
-        panelCreacion.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, -1, -1));
-        panelCreacion.add(texto1Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 183, -1));
+        panelCreacion.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, -1, -1));
+        panelCreacion.add(texto1Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 183, -1));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -298,12 +302,12 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
-        panelCreacion.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 290, 60));
+        panelCreacion.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 290, 60));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Direccion:");
-        panelCreacion.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-        panelCreacion.add(textoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 183, -1));
+        panelCreacion.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+        panelCreacion.add(textoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 183, -1));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Sangre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -327,7 +331,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        panelCreacion.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 200, 60));
+        panelCreacion.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 200, 60));
 
         labelFecha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelFecha.setForeground(new java.awt.Color(0, 153, 51));
@@ -339,9 +343,9 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         textoId.setText("0");
         panelCreacion.add(textoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 80, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Feha Ingreso:");
-        panelCreacion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+        panelCreacion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
@@ -351,7 +355,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        panelCreacion.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 230, 190, -1));
+        panelCreacion.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 190, -1));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/varita-magica.png"))); // NOI18N
@@ -361,11 +365,11 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        panelCreacion.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 270, 190, -1));
+        panelCreacion.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 190, -1));
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel20.setText("Parientes:");
-        panelCreacion.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, -1, -1));
+        panelCreacion.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, -1, -1));
 
         botonParientes.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         botonParientes.setText("+");
@@ -374,9 +378,9 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 botonParientesActionPerformed(evt);
             }
         });
-        panelCreacion.add(botonParientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, 140, -1));
+        panelCreacion.add(botonParientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 120, 70, -1));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de los padres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         labelCCPadre.setForeground(new java.awt.Color(204, 0, 0));
@@ -420,7 +424,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelCreacion.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 270, 80));
+        panelCreacion.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, 270, 80));
 
         panelCentral.add(panelCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1150, 320));
 
@@ -434,7 +438,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                 botonConsultarActionPerformed(evt);
             }
         });
-        panelCentral.add(botonConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, -1));
+        panelCentral.add(botonConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -453,13 +457,10 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        enableComponents(panelCreacion, true);
-        textoId.setEnabled(true);
-        btnGuardar.setText("GUARDAR");
+        botonNuevo();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-
         botonModificar();
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -474,11 +475,12 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textoFiltroKeyReleased
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (btnGuardar.getText().equals("MODIFICAR"))
+        if (btnGuardar.getText().equals("MODIFICAR")) {
             modificar();
-        else 
+        } else {
             botonGuardar();
-        
+        }
+
         cargarTabla(ACTIVO);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -493,7 +495,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_comboFilterActionPerformed
 
     private void botonParientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParientesActionPerformed
-        
+
     }//GEN-LAST:event_botonParientesActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
@@ -509,7 +511,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
                     control.eliminar(codigo);
                     JOptionPane.showMessageDialog(panelCentral, "Docente eliminado exitosamente.",
                             "Informacion", JOptionPane.INFORMATION_MESSAGE, frameIcon);
-                    //cargarTabla(0);
+                    cargarTabla(ACTIVO);
                 } catch (NullPointerException ex) {
                     JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
                 } catch (Exception ex) {
@@ -521,14 +523,14 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
 
         }
     }
-    private void botonConsultar(){
+
+    private void botonConsultar() {
         int codigo = seleccionTablaCodigo();
         if (codigo != -1) {
             Estudiante estudiante;
             try {
                 estudiante = control.buscarPorCodigo(codigo);
-                //pintarCampos(estudiante);
-                ViewEstudianteResumen resumen =new ViewEstudianteResumen(estudiante);
+                ViewEstudianteResumen resumen = new ViewEstudianteResumen(estudiante);
                 ViewAdministrador.escritorio.add(resumen);
                 resumen.toFront();
                 resumen.show();
@@ -542,27 +544,34 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
     }
 
     private void modificar() {
-//        try {
-//            Docente docente = obtenerCamposActualizar();
-//            control.actualizar(docente);
-//            JOptionPane.showMessageDialog(panelCentral, "Docente modificado exitosamente.",
-//                    "Informacion", JOptionPane.INFORMATION_MESSAGE);
-//            limpiarCampos();
-//            enableComponents(panelCreacion, false);
-//        } catch (NullPointerException ex) {
-//            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
-//        }
+        try {
+            Estudiante estudiante = obtenerCamposActualizar();
+            control.actualizar(estudiante);
+            JOptionPane.showMessageDialog(panelCentral, "Estudiante modificado exitosamente.",
+                    "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+            enableComponents(panelCreacion, false);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
+        }
     }
-    
+
+    private void botonNuevo() {
+        enableComponents(panelCreacion, true);
+        textoId.setEnabled(true);
+        btnGuardar.setText("GUARDAR");
+        Date fechaActual = new JCalendar().getDate();
+        labelFecha.setText(formatFecha(fechaActual));
+    }
 
     private void botonModificar() {
         int codigo = seleccionTablaCodigo();
         if (codigo != -1) {
             enableComponents(panelCreacion, true);
             btnGuardar.setText("MODIFICAR");
-            textoId.setEnabled(false);
+            textoIdentificacion.setEnabled(false);
             Estudiante estudiante;
             try {
                 estudiante = control.buscarPorCodigo(codigo);
@@ -617,8 +626,8 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         String direccion = textoDireccion.getText();
         int sexo = getRadioSexo();
         String correo = textoCorreo.getText();
-        java.util.Date fechaExpedicion = null;
-        java.util.Date fechaNacimiento = null;
+        Date fechaExpedicion = null;
+        Date fechaNacimiento = null;
         try {
             fechaExpedicion = dateExpedicion.getDate();
             fechaNacimiento = dateNacimiento.getDate();
@@ -628,7 +637,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
 
         String lugarExpedicion = textoLugarExpe.getText();
         int tipoSagre = comboTipoSangre.getSelectedIndex();
-        java.util.Date fechaIngreso = new JCalendar().getDate();
+        Date fechaIngreso = new JCalendar().getDate();
 
         Estudiante estudiante = new Estudiante(identificacion, tipoId, ACTIVO, fechaExpedicion, primerNombre, segundoNombre,
                 primerApellido, segundoApellido, sexo, fechaNacimiento, direccion, tipoSagre, fechaIngreso, correo, lugarExpedicion);
@@ -647,41 +656,53 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
             return 0;
         }
     }
+
     private void setRadioSexo(int numero) {
-            switch(numero){
-                case 1: jRadioMasculino.setSelected(true);
-                case 2:jRadioFem.setSelected(true);
-                case 3:jRadioOtro.setSelected(true);               
-            }
+        switch (numero) {
+            case 1:
+                jRadioMasculino.setSelected(true);
+            case 2:
+                jRadioFem.setSelected(true);
+            case 3:
+                jRadioOtro.setSelected(true);
+        }
     }
 
-    private Docente obtenerCamposActualizar() {
-//        int codigo = Integer.parseInt(labelCodigo.getText());
-//
-//        try {
-//            Docente docente;
-//            docente = control.buscarPorCodigo(codigo);
-//            docente.setNombres(textoNombre.getText());
-//            docente.setApellidos(textoApellidos.getText());
-//            docente.setDireccion(textoDireccion.getText());
-//            docente.setCorreo(textoCorreo.getText());
-//            docente.setTelefono(textoTelefono.getText());
-//            docente.setTitulo(textoTitulo.getText());
-//            docente.setCiudad(textoCiudad.getText());
-//
-//            Long fecha = calendarFecha.getDate().getTime();
-//            Date fechaNacimiento = new Date(fecha);
-//
-//            docente.setFechaNacimiento(fechaNacimiento);
-//            docente.setTipoSangre(comboTipoSangre.getSelectedIndex());
-//            docente.setEstado(comboEstado.getSelectedIndex());
-//
-//            return docente;
-//        } catch (Exception ex) {
-//            Logger.getLogger(ViewEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
-//            return null;
-//        }
-return null;
+    private String formatFecha(Date fecha) {
+        SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
+        return objSDF.format(fecha);
+    }
+
+    private Estudiante obtenerCamposActualizar() {
+        int codigo = Integer.parseInt(textoId.getText());
+
+        try {
+            Estudiante estudiante = control.buscarPorCodigo(codigo);
+            System.out.println(estudiante.toString());
+            estudiante.setPrimerApellido(texto1nombre.getText());
+            estudiante.setSegundoNombre(texto2nombre.getText());
+            estudiante.setPrimerApellido(texto1Apellido.getText());
+            estudiante.setSegundoApellido(texto2Apellido.getText());
+            estudiante.setTipoId(comboTipoId.getSelectedIndex());
+            estudiante.setDireccion(textoDireccion.getText());
+            estudiante.setSexo(getRadioSexo());
+            estudiante.setCorreo(textoCorreo.getText());
+
+            Date fechaExpedicion = null;
+            Date fechaNacimiento = null;
+            try {
+                fechaExpedicion = dateExpedicion.getDate();
+                fechaNacimiento = dateNacimiento.getDate();
+            } catch (Exception e) {
+            }
+            estudiante.setFechaNacimiento(fechaNacimiento);
+            estudiante.setExpedicion(fechaExpedicion);
+            estudiante.setLugarExpedicion(textoLugarExpe.getText());
+            estudiante.setTipoSangre(comboTipoSangre.getSelectedIndex());
+            return estudiante;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private void pintarCampos(Estudiante estudiante) {
@@ -723,7 +744,6 @@ return null;
 //        } catch (Exception e) {
 //            return false;
 //        }
-
         return true;
     }
 

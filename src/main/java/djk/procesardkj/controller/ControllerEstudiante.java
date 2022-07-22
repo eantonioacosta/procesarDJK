@@ -46,7 +46,10 @@ public class ControllerEstudiante {
         }
     }
 
-    public void actualizar(Estudiante estudiante) throws Exception {
+    public void actualizar(Estudiante estudiante) throws Exception,  NullPointerException{
+        if (estudiante==null) {
+            throw new NullPointerException("Error en los datos");
+        }
         dao.edit(estudiante);
     }
 
@@ -71,7 +74,7 @@ public class ControllerEstudiante {
     }
     
      public DefaultTableModel getTabla(String estado) throws Exception{//Validar si la tabla esta vacia
-        String[] columnas = {"#", "IDENTFICACION", "TIPO ID","ESTADO", "1er APELLIDO", "2DO APELLIDO", "1er NOMBRE", "2do NOMBRE", 
+        String[] columnas = {"#", "IDENTFICACION", "TIPO ID","ESTADO", "1er APELLIDO", "2do APELLIDO", "1er NOMBRE", "2do NOMBRE", 
             "SEXO","FECHA NTO", "DIRECCION", "T.S", "FECHA INGRESO", "CC PADRE", "CC MADRE"};
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
