@@ -14,18 +14,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class ViewConsultaGrados extends javax.swing.JInternalFrame {
-    
+
     ControllerGrupo control;
     AnioLectivo anioLocal;
-    
+
     public ViewConsultaGrados() {
         initComponents();
         iniciarControladores();
-        
+
     }
-    
+
     private void iniciarControladores() {
         control = new ControllerGrupo();
         anioLocal = ViewAdministrador.anioLectivo;
@@ -301,12 +303,12 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
     private void botonLimpliar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpliar
         botonLimpiar();
     }//GEN-LAST:event_botonLimpliar
-    
+
     private void eliminarItemComboGrupo() {
         comboGrupo.removeAllItems();
         comboGrupo.addItem("Selec.");
     }
-    
+
     private void cargarComboGrupos() {
         try {
             List<Grupo> grupos = getListaGrupos();
@@ -316,9 +318,9 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelDatos, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }
-    
+
     private void botonLimpiar() {
         tabla.setModel(new DefaultTableModel());
         comboGrados.setSelectedIndex(0);
@@ -329,10 +331,10 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
         textoSize.setText("");
         enableComponents(panelDatos, false);
     }
-    
+
     private void botonConsultar() {
         int indice = comboGrupo.getSelectedIndex() - 1;
-        
+
         try {
             Grupo grupo = getListaGrupos().get(indice);
             textoDirector.setText((grupo.getDocente() != null) ? grupo.getDocente().getNombreCarga() : "No disponible");
@@ -344,15 +346,15 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelDatos, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }
-    
+
     private List<Grupo> getListaGrupos() throws Exception {
         int jornada = comboJornada.getSelectedIndex();
         int grupo = comboGrados.getSelectedIndex() - 1;
         return control.verGrupos(anioLocal.getIdAnioLectivo(), grupo, jornada);
     }
-    
+
     public void enableComponents(Container container, boolean enable) {
         Component[] components = container.getComponents();
         for (Component component : components) {
@@ -362,12 +364,12 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
     public void getTabla(Grupo grupo) throws Exception {
-        String[] columnas = {"#","TIPO ID", "IDENTIFICACION", "NOMBRE COMPLETO","SEXO", "FECHA INGRESO"};
+        String[] columnas = {"#", "TIPO ID", "IDENTIFICACION", "NOMBRE COMPLETO", "SEXO", "FECHA INGRESO"};
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
-        
+
         String[] fila = new String[columnas.length];
         int cont = 1;
         for (Matricula matricula : grupo.getMatriculaList()) {
@@ -381,6 +383,9 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
             cont++;
         }
         tabla.setModel(modelo);
+        TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(modelo);
+        tabla.setRowSorter(elQueOrdena);
+
         tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         TableColumnModel columnModel = tabla.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(30);
@@ -389,7 +394,7 @@ public class ViewConsultaGrados extends javax.swing.JInternalFrame {
         columnModel.getColumn(3).setPreferredWidth(400);
         columnModel.getColumn(4).setPreferredWidth(80);
         columnModel.getColumn(5).setPreferredWidth(80);
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonConsultar;
