@@ -314,5 +314,18 @@ public class EstudianteJpaController implements Serializable {
             em.close();
         }
     }
+    public Estudiante findByIdentificacion(String identificacion) throws Exception{
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Estudiante> consulta = em.createNamedQuery("Estudiante.findByIdentificacion", Estudiante.class);
+            consulta.setParameter("identificacion", identificacion);
+            return consulta.getSingleResult();
+        }catch(Exception ex){
+            throw new Exception("Estudiante no registrado!", ex);
+        }
+        finally {
+            em.close();
+        }
+    }
 
 }

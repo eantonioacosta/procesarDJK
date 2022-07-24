@@ -20,17 +20,20 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void cargarAniosLectivos() {
         try {
+            comboAnio.removeAllItems();
+            comboAnio.addItem("Seleccione una opcion:");
             ControllerAnioLectivo controlAnioLectivo = new ControllerAnioLectivo();
             controlAnioLectivo.verAniosLectivos().forEach((lectivo) -> {
                 comboAnio.addItem(lectivo.getIdAnioLectivo()+ " - " + lectivo.getNombre());
             });
             comboAnio.setSelectedIndex(1);// Borrar
+            
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), 
                     "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), 
-                    "Excepcion", JOptionPane.WARNING_MESSAGE);
+                    "Excepcion, la conexion a internet ha fallado", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -48,6 +51,7 @@ public class ViewLogin extends javax.swing.JFrame {
         TextPassword = new javax.swing.JPasswordField();
         botonEntrar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+        labelActualizar = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +72,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel5.setText("Año Lectivo:");
 
         comboAnio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        comboAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion:" }));
         comboAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 comboAnioKeyPressed(evt);
@@ -113,6 +116,13 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
+        labelActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/interrogatorio.png"))); // NOI18N
+        labelActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                labelActualizarMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -128,7 +138,9 @@ public class ViewLogin extends javax.swing.JFrame {
                     .addComponent(textUsuario)
                     .addComponent(TextPassword)
                     .addComponent(comboAnio, 0, 223, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelActualizar)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(botonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,9 +152,11 @@ public class ViewLogin extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelActualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -224,6 +238,11 @@ public class ViewLogin extends javax.swing.JFrame {
     private void textUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textUsuarioActionPerformed
+
+    private void labelActualizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelActualizarMousePressed
+        JOptionPane.showMessageDialog(panelCentral, "PROCESAR DJK 2022", "actualizando...", JOptionPane.INFORMATION_MESSAGE);
+        cargarAniosLectivos();
+    }//GEN-LAST:event_labelActualizarMousePressed
     private void entrarSistema() {
         try {
             String codigo = textUsuario.getText();
@@ -262,6 +281,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelActualizar;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
