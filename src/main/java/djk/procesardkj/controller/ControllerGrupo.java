@@ -3,8 +3,7 @@ package djk.procesardkj.controller;
 
 import djk.procesardkj.datos.GrupoJpaController;
 import djk.procesardkj.domain.AnioLectivo;
-import djk.procesardkj.domain.Asignatura;
-import djk.procesardkj.domain.CargaAcademica;
+import djk.procesardkj.domain.Estudiante;
 import djk.procesardkj.domain.Grupo;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +110,7 @@ public class ControllerGrupo {
         }
         return modelo;
     }
+    
 
     private boolean[] editable = {false, false, false, false, true, false};
     public void visualizar(JTable tabla) {

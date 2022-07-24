@@ -33,7 +33,7 @@ public class ControllerEstudiante {
 
     public void validate(Estudiante estudiante) throws Exception, NullPointerException {
         if (estudiante.getIdentificacion().trim().length() == 0) {
-            throw new NullPointerException("Favor ingresar la identificación.");
+            throw new NullPointerException("Favor ingresar el número identificación.");
         }
         if (estudiante.getTipoId() == 0 || estudiante.getTipoId() == -1) {
             throw new NullPointerException("Favor seleccionar el tipo de identificación.");
@@ -71,6 +71,12 @@ public class ControllerEstudiante {
 
     public List<Estudiante> buscarPorEstado(String estado) throws Exception{
         return dao.findByEstado(estado);
+    }
+    public Estudiante buscarPorIdentificacion(String identificacion) throws Exception, NullPointerException{
+        if(identificacion.isEmpty()){
+            throw new NullPointerException("Favor ingresar el número identificación.");
+        }
+        return dao.findByIdentificacion(identificacion);
     }
     
      public DefaultTableModel getTabla(String estado) throws Exception{//Validar si la tabla esta vacia

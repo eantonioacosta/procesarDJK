@@ -397,4 +397,8 @@ public class Estudiante implements Serializable {
     public String getExpedicionTexto() {
         return getFormatFecha(expedicion);
     }
+    
+    public String getNombreCompleto(){
+        return primerApellido+" "+segundoApellido+" "+ primerNombre+" "+ segundoNombre;
+    }
 }

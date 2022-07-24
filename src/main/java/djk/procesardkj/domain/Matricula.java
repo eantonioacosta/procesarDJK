@@ -134,9 +134,25 @@ public class Matricula implements Serializable {
         return true;
     }
 
+
     @Override
     public String toString() {
         return "djk.procesardkj.domain.Matricula[ idMatricula=" + idMatricula + " ]";
+    }
+    
+    public String getTipoMatriculaTexto() {
+        switch (tipoMatricula) {
+            case 1:
+                return "Nuevo";
+            case 2:
+                return "Promovido";
+            case 3:
+                return "Reiniciante";
+            case 4:
+                return "Especial";
+            default:
+                return "Sin Definir";
+        }
     }
     
 }

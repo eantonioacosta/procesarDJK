@@ -28,6 +28,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jLabelUsuario.setText(usuarioSistema.getNombre());
         jLabelPerfil.setText(usuarioSistema.getNivelUsuarioText());
         jLabelAnio.setText(anioLectivo.getNombre());
+        
         if (usuarioSistema.getNivelUsuario() == 1) {
             jMenuInicio.setVisible(true);
         } else {
@@ -506,16 +507,15 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void MenuItemMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemMatricularActionPerformed
-
-//        FormMatriculas formMatricula = new FormMatriculas();
-//        layeredPanel.add(formMatricula);
-//        formMatricula.setVisible(true);
+        ViewMatricula viewMatricula = new ViewMatricula();
+        escritorio.add(viewMatricula);
+        viewMatricula.show();
     }//GEN-LAST:event_MenuItemMatricularActionPerformed
 
     private void menuItemAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAreasActionPerformed
-        ViewAsignaturas formAreas = new ViewAsignaturas();
-        escritorio.add(formAreas);
-        formAreas.show();
+        ViewAsignaturas viewAreas = new ViewAsignaturas();
+        escritorio.add(viewAreas);
+        viewAreas.show();
     }//GEN-LAST:event_menuItemAreasActionPerformed
 
     private void itemAsignaruraGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAsignaruraGruposActionPerformed
