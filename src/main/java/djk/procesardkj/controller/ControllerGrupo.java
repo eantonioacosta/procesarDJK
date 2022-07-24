@@ -64,7 +64,7 @@ public class ControllerGrupo {
     public List<Grupo> verGrupos(int idAnioLectivo, int grado, int jornada) throws Exception {
         List<Grupo> listaGrupo = new ArrayList<>();
 
-        for (Grupo grupo : verGruposTodos()) {
+        for (Grupo grupo : verGrupos(idAnioLectivo)) {
             if (grupo.getNombre() == grado && grupo.getJornada() == jornada) {
                 listaGrupo.add(grupo);
             }

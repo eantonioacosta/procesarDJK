@@ -21,10 +21,10 @@ public class ControllerMatricula {
     }
 
     public void registrar(Matricula matricula, AnioLectivo anio) throws Exception , NullPointerException, PreexistingEntityException{
-        if(matricula.getGrupo()==null)
-            throw new NullPointerException("Por favor seleccione un grupo/grado");
         if(matricula.getEstudiante()==null)
             throw new NullPointerException("Por favor seleccione un Estudiante");
+        if(matricula.getGrupo()==null)
+            throw new NullPointerException("Por favor seleccione un grupo/grado");
         if(validarInformacion(matricula, anio))
             throw new NullPointerException("El Estudiante ya se encuentra registrado!");
         dao.create(matricula);

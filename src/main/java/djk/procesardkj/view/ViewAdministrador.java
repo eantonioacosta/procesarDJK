@@ -11,6 +11,7 @@ import djk.procesardkj.view.inicio.ViewGrupos;
 import djk.procesardkj.view.inicio.ViewUsuarios;
 import djk.procesardkj.domain.AnioLectivo;
 import djk.procesardkj.domain.Usuario;
+import djk.procesardkj.view.inicio.consultas.ViewConsultaGrados;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
@@ -90,7 +91,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItemGradosConsulta = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
@@ -214,7 +215,6 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu5.setPreferredSize(new java.awt.Dimension(179, 35));
 
-        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem5.setText("Usuarios");
         jMenuItem5.setPreferredSize(new java.awt.Dimension(237, 30));
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +225,6 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu5.add(jMenuItem5);
         jMenu5.add(jSeparator3);
 
-        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem7.setText("Grupos");
         jMenuItem7.setPreferredSize(new java.awt.Dimension(237, 30));
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +235,6 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu5.add(jMenuItem7);
         jMenu5.add(jSeparator4);
 
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jMenuItem6.setText("Años Lectivos");
         jMenuItem6.setPreferredSize(new java.awt.Dimension(237, 30));
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -369,12 +367,20 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenu3.setPreferredSize(new java.awt.Dimension(130, 28));
 
         jMenuItem17.setText("General");
+        jMenuItem17.setPreferredSize(new java.awt.Dimension(179, 35));
         jMenu3.add(jMenuItem17);
 
-        jMenuItem18.setText("Por Grados");
-        jMenu3.add(jMenuItem18);
+        jMenuItemGradosConsulta.setText("Por Grados");
+        jMenuItemGradosConsulta.setPreferredSize(new java.awt.Dimension(179, 35));
+        jMenuItemGradosConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGradosConsultaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemGradosConsulta);
 
         jMenuItem19.setText("Matriculados");
+        jMenuItem19.setPreferredSize(new java.awt.Dimension(179, 35));
         jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem19ActionPerformed(evt);
@@ -545,6 +551,12 @@ public class ViewAdministrador extends javax.swing.JFrame {
         estudiantesView.show();
     }//GEN-LAST:event_jMenuItemRegistrarActionPerformed
 
+    private void jMenuItemGradosConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGradosConsultaActionPerformed
+        ViewConsultaGrados gradoConsultaView = new ViewConsultaGrados();
+        escritorio.add(gradoConsultaView);
+        gradoConsultaView.show();             
+    }//GEN-LAST:event_jMenuItemGradosConsultaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemMatricular;
@@ -579,7 +591,6 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
@@ -596,6 +607,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemGradosConsulta;
     private javax.swing.JMenuItem jMenuItemRegistrar;
     private javax.swing.JMenu jMenuProcesos;
     private javax.swing.JPanel jPanel2;
