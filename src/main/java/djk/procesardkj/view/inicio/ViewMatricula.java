@@ -92,14 +92,14 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
         textTipoMatricula = new javax.swing.JTextField();
         textoGrupo = new javax.swing.JTextField();
         labelFecha = new javax.swing.JLabel();
+        botonMatricular = new javax.swing.JButton();
         panelProceso = new javax.swing.JPanel();
-        panelProcesoPadres = new javax.swing.JPanel();
+        panelProcesoGrupo = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         panelProcesoEstudiante = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
-        panelProcesoAcudiente = new javax.swing.JPanel();
+        panelProcesoMatricula = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
-        botonMatricular = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -317,7 +317,7 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
         labelEstado.setText("Estado");
 
         botonCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/busqueda.png"))); // NOI18N
+        botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cruz.png"))); // NOI18N
         botonCancelar.setText("CANCELAR");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,8 +390,18 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
         textoGrupo.setEditable(false);
         textoGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        labelFecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labelFecha.setText("Fecha Matricula");
+        labelFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelFecha.setForeground(new java.awt.Color(0, 204, 51));
+        labelFecha.setText("yyyy-MM-dd");
+
+        botonMatricular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonMatricular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
+        botonMatricular.setText("MATRICULAR");
+        botonMatricular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMatricularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDatosFinalesLayout = new javax.swing.GroupLayout(panelDatosFinales);
         panelDatosFinales.setLayout(panelDatosFinalesLayout);
@@ -406,13 +416,15 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDatosFinalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDatosFinalesLayout.createSequentialGroup()
-                        .addComponent(labelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(textTipoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
+                        .addComponent(botonMatricular)
+                        .addGap(115, 115, 115))
                     .addGroup(panelDatosFinalesLayout.createSequentialGroup()
                         .addGroup(panelDatosFinalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textTipoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(570, Short.MAX_VALUE))))
+                            .addComponent(labelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelDatosFinalesLayout.setVerticalGroup(
             panelDatosFinalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,7 +436,8 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDatosFinalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(textTipoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textTipoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMatricular))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDatosFinalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -432,24 +445,24 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelDatos.add(panelDatosFinales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 930, 120));
+        panelDatos.add(panelDatosFinales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 930, 140));
 
-        panelPrincipal.add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 980, 320));
+        panelPrincipal.add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 980, 340));
 
         panelProceso.setBackground(new java.awt.Color(255, 255, 255));
         panelProceso.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelProceso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelProcesoPadres.setBackground(new java.awt.Color(0, 255, 153));
-        panelProcesoPadres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelProcesoGrupo.setBackground(new java.awt.Color(0, 255, 153));
+        panelProcesoGrupo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/check.png"))); // NOI18N
         jLabel42.setText("Datos - Grupo");
         jLabel42.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        panelProcesoPadres.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 130, -1));
+        panelProcesoGrupo.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 130, -1));
 
-        panelProceso.add(panelProcesoPadres, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 320, -1));
+        panelProceso.add(panelProcesoGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 320, -1));
 
         panelProcesoEstudiante.setBackground(new java.awt.Color(0, 255, 153));
         panelProcesoEstudiante.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -462,28 +475,18 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
 
         panelProceso.add(panelProcesoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, -1));
 
-        panelProcesoAcudiente.setBackground(new java.awt.Color(0, 255, 153));
-        panelProcesoAcudiente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelProcesoMatricula.setBackground(new java.awt.Color(0, 255, 153));
+        panelProcesoMatricula.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/check.png"))); // NOI18N
         jLabel44.setText("Finalizado");
         jLabel44.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        panelProcesoAcudiente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 130, -1));
+        panelProcesoMatricula.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 130, -1));
 
-        panelProceso.add(panelProcesoAcudiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 0, 330, -1));
+        panelProceso.add(panelProcesoMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 0, 330, -1));
 
-        panelPrincipal.add(panelProceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 980, 40));
-
-        botonMatricular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        botonMatricular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/controlar.png"))); // NOI18N
-        botonMatricular.setText("MATRICULAR");
-        botonMatricular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMatricularActionPerformed(evt);
-            }
-        });
-        panelPrincipal.add(botonMatricular, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, -1, -1));
+        panelPrincipal.add(panelProceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 980, 40));
 
         jPanel1.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1000, 520));
 
@@ -559,12 +562,7 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-
-        enableComponents(panelGrado, false);
-        enableComponents(panelDatosFinales, false);
-        textoIdentificacion.setEnabled(true);
-        botonBuscar.setEnabled(true);
-        limpiarPanelEstudiante();
+        botonCancelar();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void botonConsultar(){
@@ -579,6 +577,9 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
             botonBuscar.setEnabled(false);
             enableComponents(panelGrado, true);
             botonAceptar.setEnabled(false);
+            
+            //Barra de proceso
+            enableComponents(panelProcesoGrupo, true);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelDatos, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
@@ -590,6 +591,10 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
         enableComponents(panelDatos, true);
         enableComponents(panelGrado, false);
         enableComponents(panelDatosFinales, false);
+        //Barra de procesos
+        enableComponents(panelProceso, true);
+        enableComponents(panelProcesoGrupo, false);
+        enableComponents(panelProcesoMatricula, false);
     }
     private void limpiarPanelEstudiante(){
         textoIdentificacion.setText("");
@@ -627,13 +632,26 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
             comboGrados.setEnabled(false);
             comboJornada.setEnabled(false);
             comboGrupo.setEnabled(false);
+            
+            //Barra de proceso
+            enableComponents(panelProcesoMatricula, true);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(panelDatos, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
             grupoLocal = null;
         }
 
     }
-    
+    private void botonCancelar(){
+        enableComponents(panelGrado, false);
+        enableComponents(panelDatosFinales, false);
+        enableComponents(panelProceso, false);
+        textoIdentificacion.setEnabled(true);
+        botonBuscar.setEnabled(true);
+        limpiarPanelEstudiante();
+        //Barra de proceso
+        enableComponents(panelProcesoGrupo, false);
+        enableComponents(panelProcesoMatricula, false);
+    }
     private void botonMatricula(){
         Matricula matricula = new Matricula();
         matricula.setEstudiante(estudianteLocal);
@@ -645,7 +663,7 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
         try {
             controlMatricula.registrar(matricula, anioLocal);
             JOptionPane.showMessageDialog(panelDatos, "Estudiante matriculado exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            limpiarPanelEstudiante();
+            botonCancelar();
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelDatos, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
@@ -680,6 +698,7 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
     }
     private void iniciarPaneles(){
         enableComponents(panelDatos, false);
+        enableComponents(panelProceso, false);
     }
     private void eliminarItemComboGrupo() {
         comboGrupo.removeAllItems();
@@ -721,9 +740,9 @@ public class ViewMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelGrado;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelProceso;
-    private javax.swing.JPanel panelProcesoAcudiente;
     private javax.swing.JPanel panelProcesoEstudiante;
-    private javax.swing.JPanel panelProcesoPadres;
+    private javax.swing.JPanel panelProcesoGrupo;
+    private javax.swing.JPanel panelProcesoMatricula;
     private javax.swing.JTextField textTipoMatricula;
     private javax.swing.JTextField textoGrupo;
     private javax.swing.JTextField textoIdentificacion;

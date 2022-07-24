@@ -126,6 +126,7 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         botonConsultar = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
         setTitle("Creacion y Modificacion de datos para Estudiantes");
         setPreferredSize(new java.awt.Dimension(1200, 640));
 
@@ -681,10 +682,10 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         try {
             Estudiante estudiante = control.buscarPorCodigo(codigo);
             System.out.println(estudiante.toString());
-            estudiante.setPrimerApellido(texto1nombre.getText());
-            estudiante.setSegundoNombre(texto2nombre.getText());
             estudiante.setPrimerApellido(texto1Apellido.getText());
             estudiante.setSegundoApellido(texto2Apellido.getText());
+            estudiante.setPrimerNombre(texto1nombre.getText());
+            estudiante.setSegundoNombre(texto2nombre.getText());
             estudiante.setTipoId(comboTipoId.getSelectedIndex());
             estudiante.setDireccion(textoDireccion.getText());
             estudiante.setSexo(getRadioSexo());

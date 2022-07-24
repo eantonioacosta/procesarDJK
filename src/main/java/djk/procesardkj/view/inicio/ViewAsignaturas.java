@@ -40,7 +40,7 @@ public class ViewAsignaturas extends javax.swing.JInternalFrame {
             tablaArea.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = tablaArea.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(35);
-            columnModel.getColumn(1).setPreferredWidth(400);
+            columnModel.getColumn(1).setPreferredWidth(350);
             columnModel.getColumn(2).setPreferredWidth(70);
             cargarComboArea();
         } catch (Exception ex) {
