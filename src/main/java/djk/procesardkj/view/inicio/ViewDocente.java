@@ -34,7 +34,12 @@ public class ViewDocente extends javax.swing.JInternalFrame {
 
     private void cargarTabla(int numero) {
         try {
-            table.setModel(control.getTabla(numero));
+            DefaultTableModel modelo =control.getTabla(numero);
+            table.setModel(modelo);
+            
+            TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(modelo);
+            table.setRowSorter(elQueOrdena);
+            
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = table.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(30);
@@ -484,8 +489,8 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         Docente docente;
         int codigo = Integer.parseInt(labelCodigo.getText());
         String identificacion = textoId.getText();
-        String nombres = textoNombre.getText();
-        String apellidos = textoApellidos.getText();
+        String nombres = textoNombre.getText().toUpperCase();
+        String apellidos = textoApellidos.getText().toUpperCase();
         String direccion = textoDireccion.getText();
         String correo = textoCorreo.getText();
         String telefono = textoTelefono.getText();
@@ -512,8 +517,8 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         try {
             Docente docente;
             docente = control.buscarPorCodigo(codigo);
-            docente.setNombres(textoNombre.getText());
-            docente.setApellidos( textoApellidos.getText());
+            docente.setNombres(textoNombre.getText().toUpperCase());
+            docente.setApellidos( textoApellidos.getText().toUpperCase());
             docente.setDireccion(textoDireccion.getText());
             docente.setCorreo(textoCorreo.getText());
             docente.setTelefono(textoTelefono.getText());

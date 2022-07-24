@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class ViewEstudiantes extends javax.swing.JInternalFrame {
@@ -35,7 +36,12 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
 
     private void cargarTabla(String estado) {
         try {
-            tablaEstudiantes.setModel(control.getTabla(estado));
+            DefaultTableModel modelo = control.getTabla(estado);
+            tablaEstudiantes.setModel(modelo);
+            
+            TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(modelo);
+            tablaEstudiantes.setRowSorter(elQueOrdena);
+            
             tablaEstudiantes.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             TableColumnModel columnModel = tablaEstudiantes.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(30);
@@ -619,10 +625,10 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
 
     public Estudiante obtenerCampos() {
         String identificacion = textoIdentificacion.getText();
-        String primerNombre = texto1nombre.getText();
-        String primerApellido = texto1Apellido.getText();
-        String segundoNombre = texto2nombre.getText();
-        String segundoApellido = texto2Apellido.getText();
+        String primerNombre = texto1nombre.getText().toUpperCase();
+        String primerApellido = texto1Apellido.getText().toUpperCase();
+        String segundoNombre = texto2nombre.getText().toUpperCase();
+        String segundoApellido = texto2Apellido.getText().toUpperCase();
         int tipoId = comboTipoId.getSelectedIndex();
         String direccion = textoDireccion.getText();
         int sexo = getRadioSexo();
@@ -680,10 +686,10 @@ public class ViewEstudiantes extends javax.swing.JInternalFrame {
         try {
             Estudiante estudiante = control.buscarPorCodigo(codigo);
             System.out.println(estudiante.toString());
-            estudiante.setPrimerApellido(texto1Apellido.getText());
-            estudiante.setSegundoApellido(texto2Apellido.getText());
-            estudiante.setPrimerNombre(texto1nombre.getText());
-            estudiante.setSegundoNombre(texto2nombre.getText());
+            estudiante.setPrimerApellido(texto1Apellido.getText().toUpperCase());
+            estudiante.setSegundoApellido(texto2Apellido.getText().toUpperCase());
+            estudiante.setPrimerNombre(texto1nombre.getText().toUpperCase());
+            estudiante.setSegundoNombre(texto2nombre.getText().toUpperCase());
             estudiante.setTipoId(comboTipoId.getSelectedIndex());
             estudiante.setDireccion(textoDireccion.getText());
             estudiante.setSexo(getRadioSexo());
