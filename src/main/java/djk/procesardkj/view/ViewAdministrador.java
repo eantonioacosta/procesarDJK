@@ -1,5 +1,14 @@
 package djk.procesardkj.view;
 
+import djk.procesardkj.view.inicio.ViewEstudiantes;
+import djk.procesardkj.view.inicio.ViewMatricula;
+import djk.procesardkj.view.inicio.ViewCargaAcademicaDocente;
+import djk.procesardkj.view.inicio.ViewCargaAcademica;
+import djk.procesardkj.view.inicio.ViewAsignaturas;
+import djk.procesardkj.view.inicio.ViewDocente;
+import djk.procesardkj.view.inicio.ViewAniosLectivos;
+import djk.procesardkj.view.inicio.ViewGrupos;
+import djk.procesardkj.view.inicio.ViewUsuarios;
 import djk.procesardkj.domain.AnioLectivo;
 import djk.procesardkj.domain.Usuario;
 import java.awt.BorderLayout;
