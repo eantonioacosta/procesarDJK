@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package djk.procesardkj.view.inicio;
 
 import djk.procesardkj.controller.ControllerDocente;
@@ -13,8 +9,6 @@ import djk.procesardkj.domain.Grupo;
 import djk.procesardkj.view.ViewAdministrador;
 import java.awt.Component;
 import java.awt.Container;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;

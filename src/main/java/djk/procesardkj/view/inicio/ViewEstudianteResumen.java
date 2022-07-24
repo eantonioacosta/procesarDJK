@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package djk.procesardkj.view.inicio;
 
 import djk.procesardkj.domain.Estudiante;
 
-/**
- *
- * @author ENOR ACOSTA
- */
 public class ViewEstudianteResumen extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ViewEstudianteResumen
-     */
     public ViewEstudianteResumen() {
         initComponents();
     }

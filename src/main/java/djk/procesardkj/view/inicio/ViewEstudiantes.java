@@ -1,15 +1,13 @@
 package djk.procesardkj.view.inicio;
 
-import djk.procesardkj.view.inicio.ViewEstudianteResumen;
+
 import com.toedter.calendar.JCalendar;
 import djk.procesardkj.controller.ControllerEstudiante;
-import djk.procesardkj.domain.Docente;
 import djk.procesardkj.domain.Estudiante;
 import djk.procesardkj.view.ViewAdministrador;
 import java.awt.Component;
 import java.awt.Container;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
