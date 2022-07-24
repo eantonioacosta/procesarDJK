@@ -14,6 +14,7 @@
     <class>djk.procesardkj.domain.Usuario</class>
     <class>djk.procesardkj.domain.Observacion</class>
     <class>djk.procesardkj.domain.CargaAcademica</class>
+    <class>djk.procesardkj.domain.Config</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://bebmfmr70dlykrbuvl8c-mysql.services.clever-cloud.com:3306/bebmfmr70dlykrbuvl8c"/>
       <property name="javax.persistence.jdbc.user" value="uzss83e6zdob5dfi"/>

@@ -1,5 +1,6 @@
 package djk.procesardkj.view;
 
+import djk.procesardkj.controller.ControllerConfig;
 import djk.procesardkj.view.inicio.ViewEstudiantes;
 import djk.procesardkj.view.inicio.ViewMatricula;
 import djk.procesardkj.view.inicio.ViewCargaAcademicaDocente;
@@ -13,7 +14,10 @@ import djk.procesardkj.domain.AnioLectivo;
 import djk.procesardkj.domain.Usuario;
 import djk.procesardkj.view.inicio.consultas.ViewConsultaGrados;
 import java.awt.BorderLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.apache.logging.log4j.core.jackson.ContextDataAsEntryListDeserializer;
 
 public class ViewAdministrador extends javax.swing.JFrame {
 
@@ -22,28 +26,23 @@ public class ViewAdministrador extends javax.swing.JFrame {
     }
     public static Usuario usuarioSistema;
     public static AnioLectivo anioLectivo;
+    ControllerConfig controlGeneral;
 
     public ViewAdministrador(Usuario usuario, AnioLectivo anio) {
         initComponents();
-        
+
         this.usuarioSistema = usuario;
         this.anioLectivo = anio;
         iniciarComponentes();
     }
 
     private void iniciarComponentes() {
+        controlGeneral = new ControllerConfig();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLayout(new BorderLayout());
         this.getContentPane().add(escritorio);
-        jLabelUsuario.setText(usuarioSistema.getNombre());
-        jLabelPerfil.setText(usuarioSistema.getNivelUsuarioText());
-        jLabelAnio.setText(anioLectivo.getNombre());
-        
-        if (usuarioSistema.getNivelUsuario() == 1) {
-            jMenuInicio.setVisible(true);
-        } else {
-            jMenuInicio.setVisible(false);
-        }
+
+        organizarCampos();
     }
 
     @SuppressWarnings("unchecked")
@@ -59,6 +58,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        labelFecha = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuInicio = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -115,15 +116,15 @@ public class ViewAdministrador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROCESAR - PRINCIPAL");
 
-        escritorio.setBackground(new java.awt.Color(204, 204, 255));
+        escritorio.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/imgLogo.jpg"))); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabelPerfil.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelPerfil.setForeground(new java.awt.Color(0, 153, 51));
+        jLabelPerfil.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPerfil.setText("Perfil");
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
@@ -178,8 +179,20 @@ public class ViewAdministrador extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        labelNombre.setFont(new java.awt.Font("Merriweather Black", 1, 36)); // NOI18N
+        labelNombre.setForeground(new java.awt.Color(255, 255, 255));
+        labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNombre.setText("INSTITUCION EDUCATIVA");
+
+        labelFecha.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelFecha.setText("Hora y fecha");
+
         escritorio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(labelNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(labelFecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -189,16 +202,25 @@ public class ViewAdministrador extends javax.swing.JFrame {
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
+            .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addComponent(labelNombre)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel3)
                 .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(5, 5, 5)
+                .addComponent(labelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
@@ -493,7 +515,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
     private void menuItemUsuarios(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarios
         ViewUsuarios formUsuarios = new ViewUsuarios();
-        
+
         escritorio.add(formUsuarios);
         formUsuarios.show();
     }//GEN-LAST:event_menuItemUsuarios
@@ -502,7 +524,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         ViewAniosLectivos formAnio = new ViewAniosLectivos();
         escritorio.add(formAnio);
         formAnio.show();
-        
+
     }//GEN-LAST:event_jMenuItemAniosLectivos
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -554,10 +576,27 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private void jMenuItemGradosConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGradosConsultaActionPerformed
         ViewConsultaGrados gradoConsultaView = new ViewConsultaGrados();
         escritorio.add(gradoConsultaView);
-        gradoConsultaView.show();             
+        gradoConsultaView.show();
     }//GEN-LAST:event_jMenuItemGradosConsultaActionPerformed
 
-
+    private void organizarCampos() {
+        jLabelUsuario.setText(usuarioSistema.getNombre());
+        jLabelPerfil.setText(usuarioSistema.getNivelUsuarioText());
+        jLabelAnio.setText(anioLectivo.getNombre());
+        if (usuarioSistema.getNivelUsuario() == 1) {
+            jMenuInicio.setVisible(true);
+        } else {
+            jMenuInicio.setVisible(false);
+        }
+        try {
+            labelNombre.setText(controlGeneral.getNombreInstitucion());
+            
+        } catch (Exception ex) {
+            labelNombre.setText("");
+        }
+        Thread changeTime = new Thread(new UpdateDate(labelFecha));
+        changeTime.start();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemMatricular;
     public static javax.swing.JDesktopPane escritorio;
@@ -619,6 +658,8 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
+    public javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelNombre;
     private javax.swing.JMenuItem menuItemAreas;
     // End of variables declaration//GEN-END:variables
 }
