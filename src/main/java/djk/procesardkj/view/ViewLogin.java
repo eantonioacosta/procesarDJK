@@ -97,7 +97,7 @@ public class ViewLogin extends javax.swing.JFrame {
         });
 
         textUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        textUsuario.setText("1003122119");
+        textUsuario.setText("41994774");
         textUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textUsuarioActionPerformed(evt);
@@ -110,7 +110,7 @@ public class ViewLogin extends javax.swing.JFrame {
         });
 
         TextPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TextPassword.setText("000");
+        TextPassword.setText("4567");
         TextPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TextPasswordKeyPressed(evt);

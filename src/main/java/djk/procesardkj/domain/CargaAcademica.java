@@ -147,5 +147,7 @@ public class CargaAcademica implements Serializable {
     public String getDocenteTexto(){
         return (docente !=null)? docente.getNombreCarga():"No tiene docente";
     }
-    
+    public String getCargaAsignatura(){
+        return ((grupo!=null)?grupo.toString():"Grupo no disponible")+" -"+((asignatura != null)? asignatura.getNombre():"No disponible");
+    }
 }

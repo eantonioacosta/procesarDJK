@@ -22,6 +22,7 @@ djk\procesardkj\view\inicio\ViewAsignaturas$4.class
 djk\procesardkj\view\inicio\ViewMatricula$1.class
 djk\procesardkj\controller\ControllerAnioLectivo.class
 djk\procesardkj\view\inicio\ViewMatricula.class
+djk\procesardkj\view\procesos\ViewCalificaciones.class
 djk\procesardkj\domain\Area_.class
 djk\procesardkj\datos\EstudianteJpaController.class
 djk\procesardkj\view\inicio\ViewAsignaturas.class
@@ -70,6 +71,7 @@ djk\procesardkj\view\inicio\ViewAniosLectivos$4.class
 djk\procesardkj\view\inicio\ViewAsignaturas$5.class
 djk\procesardkj\view\inicio\ViewDocente$8.class
 djk\procesardkj\view\inicio\ViewAsignaturas$10.class
+djk\procesardkj\view\procesos\ViewCalificaciones$1.class
 djk\procesardkj\controller\ControllerMatricula.class
 djk\procesardkj\view\inicio\ViewCargaAcademica$4.class
 djk\procesardkj\view\inicio\ViewAsignaturas$8.class
@@ -113,7 +115,6 @@ djk\procesardkj\view\ViewAdministrador.class
 djk\procesardkj\view\inicio\ViewCargaAcademica.class
 djk\procesardkj\view\ViewAdministrador$5.class
 djk\procesardkj\domain\AnioLectivo.class
-djk\procesardkj\view\procesos\VentanaTabla.class
 djk\procesardkj\view\inicio\ViewDocente$1.class
 djk\procesardkj\datos\ConfigJpaController.class
 djk\procesardkj\view\inicio\ViewDocente$7.class

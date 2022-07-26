@@ -29,13 +29,13 @@ D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\CargaAcademica.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\inicio\ViewGrupos.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\AnioLectivo.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\procesos\GestionEncabezadoTabla.java
-D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\procesos\VentanaTabla.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\datos\NotaJpaController.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\domain\Docente.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\inicio\ViewAniosLectivos.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\exceptions\NonexistentEntityException.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\inicio\ViewCargaAcademica.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\inicio\consultas\ViewConsultaGrados.java
+D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\view\procesos\ViewCalificaciones.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerAreasAsignaturas.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\Render.java
 D:\JAVA\ProcesarDKJ\src\main\java\djk\procesardkj\controller\ControllerCargaAcademica.java
