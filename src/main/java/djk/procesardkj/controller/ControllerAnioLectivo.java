@@ -36,7 +36,7 @@ public class ControllerAnioLectivo {
         dao.destroy(codigo);
     }
 
-    public List<AnioLectivo> verAniosLectivos() throws Exception{
+    public synchronized List<AnioLectivo> verAniosLectivos() throws Exception{
         return dao.findAnioLectivoEntities();
     }
 

@@ -13,11 +13,9 @@ import djk.procesardkj.view.inicio.ViewUsuarios;
 import djk.procesardkj.domain.AnioLectivo;
 import djk.procesardkj.domain.Usuario;
 import djk.procesardkj.view.inicio.consultas.ViewConsultaGrados;
+import djk.procesardkj.view.procesos.ViewCalificaciones;
 import java.awt.BorderLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.apache.logging.log4j.core.jackson.ContextDataAsEntryListDeserializer;
 
 public class ViewAdministrador extends javax.swing.JFrame {
 
@@ -87,7 +85,7 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuProcesos = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemCalificacion = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -285,6 +283,11 @@ public class ViewAdministrador extends javax.swing.JFrame {
 
         jMenuItem9.setText("Deshacer Matricula");
         jMenuItem9.setPreferredSize(new java.awt.Dimension(237, 30));
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem9);
         jMenu6.add(jSeparator1);
 
@@ -372,8 +375,13 @@ public class ViewAdministrador extends javax.swing.JFrame {
         jMenuProcesos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuProcesos.setPreferredSize(new java.awt.Dimension(130, 28));
 
-        jMenuItem3.setText("Calificacion / Valoracion");
-        jMenuProcesos.add(jMenuItem3);
+        jMenuItemCalificacion.setText("Calificacion / Valoracion");
+        jMenuItemCalificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCalificacionActionPerformed(evt);
+            }
+        });
+        jMenuProcesos.add(jMenuItemCalificacion);
 
         jMenuItem15.setText("Nivelacion");
         jMenuProcesos.add(jMenuItem15);
@@ -579,6 +587,18 @@ public class ViewAdministrador extends javax.swing.JFrame {
         gradoConsultaView.show();
     }//GEN-LAST:event_jMenuItemGradosConsultaActionPerformed
 
+    private void jMenuItemCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalificacionActionPerformed
+        ViewCalificaciones calificacionesView=new ViewCalificaciones();
+        escritorio.add(calificacionesView);
+        calificacionesView.show();
+    }//GEN-LAST:event_jMenuItemCalificacionActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        ViewMatricula viewMatricula = new ViewMatricula();
+        escritorio.add(viewMatricula);
+        viewMatricula.show();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     private void organizarCampos() {
         jLabelUsuario.setText(usuarioSistema.getNombre());
         jLabelPerfil.setText(usuarioSistema.getNivelUsuarioText());
@@ -640,12 +660,12 @@ public class ViewAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemCalificacion;
     private javax.swing.JMenuItem jMenuItemGradosConsulta;
     private javax.swing.JMenuItem jMenuItemRegistrar;
     private javax.swing.JMenu jMenuProcesos;
