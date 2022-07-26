@@ -502,8 +502,9 @@ public class ViewCargaAcademica extends javax.swing.JInternalFrame {
                 Asignatura asignatura = controlAsignatura.buscarPorCodigo(codigo);
                 CargaAcademica cargaNew = new CargaAcademica(asignatura, grupoLocal, anioLectivo);
                 controlCarga.registrar(cargaNew);
-                JOptionPane.showMessageDialog(panelCentral, "Asignatura registrada exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 botonAgregarActionPerformed(null);
+                JOptionPane.showMessageDialog(panelCentral, "Asignatura registrada exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                
             } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
             } catch (Exception ex) {

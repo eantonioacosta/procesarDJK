@@ -6,35 +6,53 @@ import djk.procesardkj.domain.AnioLectivo;
 import djk.procesardkj.domain.Usuario;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class ViewLogin extends javax.swing.JFrame {
 
     ControllerUsuario controller;
+    ControllerAnioLectivo controlAnioLectivo;
 
     public ViewLogin() {
         initComponents();
         controller = new ControllerUsuario();
-        cargarAniosLectivos();
-        
+        controlAnioLectivo = new ControllerAnioLectivo();
+        getServiceHilos();
+
     }
 
     private void cargarAniosLectivos() {
-        try {
-            comboAnio.removeAllItems();
-            comboAnio.addItem("Seleccione una opcion:");
-            ControllerAnioLectivo controlAnioLectivo = new ControllerAnioLectivo();
-            controlAnioLectivo.verAniosLectivos().forEach((lectivo) -> {
-                comboAnio.addItem(lectivo.getIdAnioLectivo()+ " - " + lectivo.getNombre());
-            });
-            comboAnio.setSelectedIndex(1);// Borrar
-            
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), 
-                    "Validacion", JOptionPane.QUESTION_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), 
-                    "Excepcion, la conexion a internet ha fallado", JOptionPane.WARNING_MESSAGE);
-        }
+        comboAnio.removeAllItems();
+        comboAnio.addItem("Seleccione una opcion:");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    controlAnioLectivo.verAniosLectivos().forEach((lectivo) -> {
+                        comboAnio.addItem(lectivo.getIdAnioLectivo() + " - " + lectivo.getNombre());
+                    });
+                    comboAnio.setSelectedIndex(1);// Borrar
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
+                            "Validacion", JOptionPane.QUESTION_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
+                            "Excepcion, la conexion a internet ha fallado", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+    }
+
+    private void getServiceHilos() {
+        Runnable proceso = new Runnable() {
+            @Override
+            public void run() {
+                cargarAniosLectivos();
+            }
+        };
+        Thread hilo = new Thread(proceso);
+        hilo.start();
     }
 
     @SuppressWarnings("unchecked")
@@ -218,19 +236,19 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_botonEntrarActionPerformed
 
     private void textUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textUsuarioKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             entrarSistema();
         }
     }//GEN-LAST:event_textUsuarioKeyPressed
 
     private void TextPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextPasswordKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             entrarSistema();
         }
     }//GEN-LAST:event_TextPasswordKeyPressed
 
     private void comboAnioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboAnioKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             entrarSistema();
         }
     }//GEN-LAST:event_comboAnioKeyPressed
@@ -241,7 +259,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void labelActualizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelActualizarMousePressed
         JOptionPane.showMessageDialog(panelCentral, "PROCESAR DJK 2022", "actualizando...", JOptionPane.INFORMATION_MESSAGE);
-        cargarAniosLectivos();
+        getServiceHilos();
     }//GEN-LAST:event_labelActualizarMousePressed
     private void entrarSistema() {
         try {
@@ -252,18 +270,17 @@ public class ViewLogin extends javax.swing.JFrame {
 
             Usuario usuario = controller.iniciarSesion(codigo, Clave);
             JOptionPane.showMessageDialog(panelCentral, "BIENVENIDO AL SISTEMA\n\t" + usuario.getNombre(), "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            
 
             ViewAdministrador principal = new ViewAdministrador(usuario, anio);
             principal.setVisible(true);
             this.dispose();
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), 
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), 
+            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(),
                     "ERROR EN LA BASE DE DATOS", JOptionPane.WARNING_MESSAGE);
-            
+
         }
     }
 

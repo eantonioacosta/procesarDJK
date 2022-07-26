@@ -216,6 +216,7 @@ public class AnioLectivoJpaController implements Serializable {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);
             }
+            
             return q.getResultList();
         } finally {
             em.close();

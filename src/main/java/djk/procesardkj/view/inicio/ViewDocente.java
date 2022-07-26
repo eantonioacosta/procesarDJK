@@ -33,32 +33,40 @@ public class ViewDocente extends javax.swing.JInternalFrame {
     }
 
     private void cargarTabla(int numero) {
-        try {
-            DefaultTableModel modelo =control.getTabla(numero);
-            table.setModel(modelo);
-            
-            TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(modelo);
-            table.setRowSorter(elQueOrdena);
-            
-            table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            TableColumnModel columnModel = table.getColumnModel();
-            columnModel.getColumn(0).setPreferredWidth(30);
-            columnModel.getColumn(1).setPreferredWidth(150);
-            columnModel.getColumn(2).setPreferredWidth(180);
-            columnModel.getColumn(3).setPreferredWidth(100);
-            columnModel.getColumn(4).setPreferredWidth(100);
-            columnModel.getColumn(5).setPreferredWidth(100);
-            columnModel.getColumn(6).setPreferredWidth(100);
-            columnModel.getColumn(7).setPreferredWidth(100);
-            columnModel.getColumn(8).setPreferredWidth(180);
-            columnModel.getColumn(9).setPreferredWidth(150);
-            columnModel.getColumn(10).setPreferredWidth(150);
+        Runnable proceso = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    DefaultTableModel modelo = control.getTabla(numero);
+                    table.setModel(modelo);
 
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
-        }
+                    TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(modelo);
+                    table.setRowSorter(elQueOrdena);
+
+                    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                    TableColumnModel columnModel = table.getColumnModel();
+                    columnModel.getColumn(0).setPreferredWidth(30);
+                    columnModel.getColumn(1).setPreferredWidth(150);
+                    columnModel.getColumn(2).setPreferredWidth(180);
+                    columnModel.getColumn(3).setPreferredWidth(100);
+                    columnModel.getColumn(4).setPreferredWidth(100);
+                    columnModel.getColumn(5).setPreferredWidth(100);
+                    columnModel.getColumn(6).setPreferredWidth(100);
+                    columnModel.getColumn(7).setPreferredWidth(100);
+                    columnModel.getColumn(8).setPreferredWidth(180);
+                    columnModel.getColumn(9).setPreferredWidth(150);
+                    columnModel.getColumn(10).setPreferredWidth(150);
+
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Excepcion", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        };
+        Thread hilo = new Thread(proceso);
+        hilo.start();
+
     }
 
     /**
@@ -112,7 +120,6 @@ public class ViewDocente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Creacion y Modificacion de datos para Docentes");
         setPreferredSize(new java.awt.Dimension(1200, 640));
 
@@ -364,7 +371,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
         } else {
             botonGuardar();
         }
-        cargarTabla(0);
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -427,6 +434,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                     "Informacion", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
             enableComponents(panelCreacion, false);
+            cargarTabla(0);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
         } catch (Exception ex) {
@@ -474,6 +482,7 @@ public class ViewDocente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(panelCentral, "Docente registrado exitosamente.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 limpiarCampos();
                 enableComponents(panelCreacion, false);
+                cargarTabla(0);
             } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(panelCentral, ex.getMessage(), "Validacion", JOptionPane.QUESTION_MESSAGE);
             } catch (Exception ex) {
@@ -518,20 +527,20 @@ public class ViewDocente extends javax.swing.JInternalFrame {
             Docente docente;
             docente = control.buscarPorCodigo(codigo);
             docente.setNombres(textoNombre.getText().toUpperCase());
-            docente.setApellidos( textoApellidos.getText().toUpperCase());
+            docente.setApellidos(textoApellidos.getText().toUpperCase());
             docente.setDireccion(textoDireccion.getText());
             docente.setCorreo(textoCorreo.getText());
             docente.setTelefono(textoTelefono.getText());
             docente.setTitulo(textoTitulo.getText());
             docente.setCiudad(textoCiudad.getText());
-            
+
             Long fecha = calendarFecha.getDate().getTime();
             Date fechaNacimiento = new Date(fecha);
-            
+
             docente.setFechaNacimiento(fechaNacimiento);
             docente.setTipoSangre(comboTipoSangre.getSelectedIndex());
             docente.setEstado(comboEstado.getSelectedIndex());
-            
+
             return docente;
         } catch (Exception ex) {
             Logger.getLogger(ViewDocente.class.getName()).log(Level.SEVERE, null, ex);
